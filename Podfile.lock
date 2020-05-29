@@ -1,0 +1,174 @@
+PODS:
+  - Alamofire (5.0.2)
+  - AlamofireImage (4.0.1):
+    - Alamofire (< 6.0.0, >= 5.0.2)
+  - AppAuth (1.3.0):
+    - AppAuth/Core (= 1.3.0)
+    - AppAuth/ExternalUserAgent (= 1.3.0)
+  - AppAuth/Core (1.3.0)
+  - AppAuth/ExternalUserAgent (1.3.0)
+  - CRRefresh (1.1.3)
+  - Firebase/Core (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.3.0)
+  - Firebase/CoreOnly (6.18.0):
+    - FirebaseCore (= 6.6.3)
+  - Firebase/Database (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 6.1.4)
+  - Firebase/Functions (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (~> 2.5.1)
+  - FirebaseAnalytics (6.3.0):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleAppMeasurement (= 6.3.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - FirebaseAuthInterop (1.0.0)
+  - FirebaseCore (6.6.3):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.1):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDatabase (6.1.4):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.22)
+  - FirebaseFunctions (2.5.1):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseInstallations (1.1.0):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - Google-Mobile-Ads-SDK (7.55.1):
+    - GoogleAppMeasurement (~> 6.0)
+  - GoogleAppMeasurement (6.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - GoogleDataTransport (4.0.1)
+  - GoogleDataTransportCCTSupport (1.4.1):
+    - GoogleDataTransport (~> 4.0)
+    - nanopb (~> 0.3.901)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.5.1)
+  - GoogleUtilities/Logger (6.5.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.5.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.5.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.5.1)"
+  - GoogleUtilities/Reachability (6.5.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.5.1):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.3.1)
+  - leveldb-library (1.22)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
+  - OAuthSwift (2.1.0)
+  - PromisesObjC (1.2.8)
+  - SwiftyJSON (5.0.0)
+  - youtube-ios-player-helper (0.1.6)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage (~> 4.0)
+  - AppAuth
+  - CRRefresh
+  - Firebase/Core
+  - Firebase/Database
+  - Firebase/Functions
+  - Google-Mobile-Ads-SDK
+  - NVActivityIndicatorView
+  - OAuthSwift
+  - SwiftyJSON
+  - youtube-ios-player-helper
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireImage
+    - AppAuth
+    - CRRefresh
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuthInterop
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
+    - FirebaseDatabase
+    - FirebaseFunctions
+    - FirebaseInstallations
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
+    - GoogleUtilities
+    - GTMSessionFetcher
+    - leveldb-library
+    - nanopb
+    - NVActivityIndicatorView
+    - OAuthSwift
+    - PromisesObjC
+    - SwiftyJSON
+    - youtube-ios-player-helper
+
+SPEC CHECKSUMS:
+  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  AlamofireImage: a8a5289046ac46b4d0183bcf73ce12ce30564cb7
+  AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
+  CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
+  Firebase: 0490eca762a72e4f1582319539153897f1508dee
+  FirebaseAnalytics: 058d71e714a1a6804d9e0f25e3bb18e377a51579
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
+  FirebaseCore: 78276943ad85e616dfa54dafa6c89512987d9d60
+  FirebaseCoreDiagnostics: 2109d10c35e8289b1ee6cabf44d9ffb055620194
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
+  FirebaseFunctions: 5af7c35d1c5e41608fecbb667eb6c4e672e318d0
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  Google-Mobile-Ads-SDK: f206aff290f26fde422495c6cd187e50efbed57e
+  GoogleAppMeasurement: 39ecba10918b21c83877d392246157f65db351cf
+  GoogleDataTransport: 653963cf5be60fb59cf051e070f0836fdc305f81
+  GoogleDataTransportCCTSupport: 84e4d4bbab642f2e9d83ee65d78aca2b5527d314
+  GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
+  OAuthSwift: ab1675598273e04355e0282459c328e65c9ddacd
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+
+PODFILE CHECKSUM: 5be2300174f57b62a7eaf5fd609897092aa49a9a
+
+COCOAPODS: 1.5.0

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>895585315866-298volmfaashdqksu34b805pqkud68j1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.895585315866-298volmfaashdqksu34b805pqkud68j1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD0nrzm6QcSWgBiWaWnfyo8uUh_KsfO4mk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>895585315866</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>player3.glitch</string>
+	<key>PROJECT_ID</key>
+	<string>glitch-72a3e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>glitch-72a3e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:895585315866:ios:0a9bfe315f0caa9cb4b5a3</string>
+	<key>DATABASE_URL</key>
+	<string>https://glitch-72a3e.firebaseio.com</string>
+</dict>
+</plist>

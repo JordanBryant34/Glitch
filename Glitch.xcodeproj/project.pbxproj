@@ -1,0 +1,1237 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53F1AC74F886A4EEA56DC3CA /* Pods_Glitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E7D2625E859A1E4922A06E /* Pods_Glitch.framework */; };
+		7A01EF20245E018100F9D448 /* YoutubeSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01EF1F245E018100F9D448 /* YoutubeSearchController.swift */; };
+		7A01EF22245E03E800F9D448 /* YoutubeSearchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01EF21245E03E800F9D448 /* YoutubeSearchExtension.swift */; };
+		7A14A88B2422D66A00BB246B /* MixerTopStreamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A88A2422D66A00BB246B /* MixerTopStreamsCell.swift */; };
+		7A14A88D2422D6DB00BB246B /* MixerTopStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A88C2422D6DB00BB246B /* MixerTopStreamCell.swift */; };
+		7A23183623FD9AFD0039E196 /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23183523FD9AFD0039E196 /* TwitterService.swift */; };
+		7A23183823FDC9A70039E196 /* TwitterTweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23183723FDC9A70039E196 /* TwitterTweet.swift */; };
+		7A23183A23FDCCF60039E196 /* TwitterFeedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23183923FDCCF60039E196 /* TwitterFeedExtension.swift */; };
+		7A23183C23FDCDB90039E196 /* TweetCellBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23183B23FDCDB90039E196 /* TweetCellBasic.swift */; };
+		7A23183E23FDE16A0039E196 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23183D23FDE16A0039E196 /* StringExtensions.swift */; };
+		7A23184023FF04E60039E196 /* TwitterMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23183F23FF04E60039E196 /* TwitterMedia.swift */; };
+		7A23184223FF1DEF0039E196 /* TwitterSingleMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23184123FF1DEF0039E196 /* TwitterSingleMediaCell.swift */; };
+		7A2714BD244642A900F35AFF /* ExploreYoutubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2714BC244642A900F35AFF /* ExploreYoutubeCell.swift */; };
+		7A2714BF24464A6200F35AFF /* ExploreMixerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2714BE24464A6200F35AFF /* ExploreMixerCell.swift */; };
+		7A638E64240C3CDE003AA5C1 /* TwitterQuoteTweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A638E63240C3CDE003AA5C1 /* TwitterQuoteTweet.swift */; };
+		7A728C872402FFA400198518 /* TwitterMultiPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A728C862402FFA400198518 /* TwitterMultiPictureCell.swift */; };
+		7A728C89240355CF00198518 /* TwitterImageViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A728C88240355CF00198518 /* TwitterImageViewerController.swift */; };
+		7A728C8B2405CF0200198518 /* TwitterQuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A728C8A2405CF0200198518 /* TwitterQuoteCell.swift */; };
+		7A728C8D2405D1EF00198518 /* TwitterQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A728C8C2405D1EF00198518 /* TwitterQuoteView.swift */; };
+		7A72C3EC2409997D00E2536E /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72C3EB2409997D00E2536E /* UIImageColors.swift */; };
+		7A7BE68523F4E29E00FE5E56 /* MixerStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE68423F4E29E00FE5E56 /* MixerStreamCell.swift */; };
+		7A7BE68723F4E5F400FE5E56 /* MixerStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE68623F4E5F400FE5E56 /* MixerStream.swift */; };
+		7A7BE68923F5E4CD00FE5E56 /* MixerWatchStreamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE68823F5E4CD00FE5E56 /* MixerWatchStreamController.swift */; };
+		7A7BE68B23F8EC9B00FE5E56 /* MixerFollowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE68A23F8EC9B00FE5E56 /* MixerFollowingController.swift */; };
+		7A7BE68D23F9E29A00FE5E56 /* MixerChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE68C23F9E29A00FE5E56 /* MixerChannel.swift */; };
+		7A7BE69123F9E60700FE5E56 /* MixerFollowingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE69023F9E60700FE5E56 /* MixerFollowingExtension.swift */; };
+		7A7BE69323F9E73600FE5E56 /* MixerFollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE69223F9E73600FE5E56 /* MixerFollowCell.swift */; };
+		7A7D937024523A9F00D43774 /* CustomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D936F24523A9F00D43774 /* CustomAnimator.swift */; };
+		7A7D93792453918A00D43774 /* AdsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D93782453918A00D43774 /* AdsAlertView.swift */; };
+		7A7D93872456245E00D43774 /* GADTMediumTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D937F2456245E00D43774 /* GADTMediumTemplateView.m */; };
+		7A7D93882456245E00D43774 /* GADTMediumTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7D93822456245E00D43774 /* GADTMediumTemplateView.xib */; };
+		7A7D93892456245E00D43774 /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D93832456245E00D43774 /* GADTSmallTemplateView.m */; };
+		7A7D938A2456245E00D43774 /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7D93842456245E00D43774 /* GADTSmallTemplateView.xib */; };
+		7A7D938B2456245E00D43774 /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D93862456245E00D43774 /* GADTTemplateView.m */; };
+		7A93D4F523F4A1E100CC57C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D4F423F4A1E100CC57C1 /* AppDelegate.swift */; };
+		7A93D4FF23F4A1E100CC57C1 /* Glitch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D4FD23F4A1E100CC57C1 /* Glitch.xcdatamodeld */; };
+		7A93D50123F4A1E400CC57C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A93D50023F4A1E400CC57C1 /* Assets.xcassets */; };
+		7A93D50423F4A1E400CC57C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A93D50223F4A1E400CC57C1 /* LaunchScreen.storyboard */; };
+		7A93D54C23F4A26C00CC57C1 /* TwitchStreamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D50D23F4A26C00CC57C1 /* TwitchStreamController.swift */; };
+		7A93D54D23F4A26C00CC57C1 /* TwitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D50E23F4A26C00CC57C1 /* TwitchService.swift */; };
+		7A93D54E23F4A26C00CC57C1 /* TwitchStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51023F4A26C00CC57C1 /* TwitchStream.swift */; };
+		7A93D54F23F4A26C00CC57C1 /* TwitchStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51123F4A26C00CC57C1 /* TwitchStreamer.swift */; };
+		7A93D55023F4A26C00CC57C1 /* TwitchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51223F4A26C00CC57C1 /* TwitchGame.swift */; };
+		7A93D55123F4A26C00CC57C1 /* TwitchStreamsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51423F4A26C00CC57C1 /* TwitchStreamsExtension.swift */; };
+		7A93D55223F4A26C00CC57C1 /* TwitchBrowseStreamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51523F4A26C00CC57C1 /* TwitchBrowseStreamsController.swift */; };
+		7A93D55323F4A26C00CC57C1 /* TwitchGamesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51623F4A26C00CC57C1 /* TwitchGamesController.swift */; };
+		7A93D55423F4A26C00CC57C1 /* TwitchGamesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51723F4A26C00CC57C1 /* TwitchGamesExtension.swift */; };
+		7A93D55523F4A26C00CC57C1 /* TwitchFollowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51923F4A26C00CC57C1 /* TwitchFollowingController.swift */; };
+		7A93D55623F4A26C00CC57C1 /* TwitchFollowingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51A23F4A26C00CC57C1 /* TwitchFollowingExtension.swift */; };
+		7A93D55723F4A26C00CC57C1 /* TwitchStreamerOfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51C23F4A26C00CC57C1 /* TwitchStreamerOfflineCell.swift */; };
+		7A93D55823F4A26C00CC57C1 /* TwitchBrowseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51D23F4A26C00CC57C1 /* TwitchBrowseCell.swift */; };
+		7A93D55923F4A26C00CC57C1 /* TwitchStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51E23F4A26C00CC57C1 /* TwitchStreamCell.swift */; };
+		7A93D55A23F4A26C00CC57C1 /* TwitchStreamsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D51F23F4A26C00CC57C1 /* TwitchStreamsHeader.swift */; };
+		7A93D55B23F4A26C00CC57C1 /* TwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52023F4A26C00CC57C1 /* TwitchViewController.swift */; };
+		7A93D55C23F4A26C00CC57C1 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52223F4A26C00CC57C1 /* YoutubeViewController.swift */; };
+		7A93D55D23F4A26C00CC57C1 /* YoutubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52423F4A26C00CC57C1 /* YoutubeVideo.swift */; };
+		7A93D55E23F4A26C00CC57C1 /* YoutubeVideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52523F4A26C00CC57C1 /* YoutubeVideoInfo.swift */; };
+		7A93D55F23F4A26C00CC57C1 /* YoutubeSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52623F4A26C00CC57C1 /* YoutubeSubscription.swift */; };
+		7A93D56023F4A26C00CC57C1 /* YoutubeTrendingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52723F4A26C00CC57C1 /* YoutubeTrendingVideo.swift */; };
+		7A93D56123F4A26C00CC57C1 /* YoutubeChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52823F4A26C00CC57C1 /* YoutubeChannel.swift */; };
+		7A93D56223F4A26C00CC57C1 /* YoutubeSubscriptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52A23F4A26C00CC57C1 /* YoutubeSubscriptionsController.swift */; };
+		7A93D56323F4A26C00CC57C1 /* YoutubeSubscriptionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52B23F4A26C00CC57C1 /* YoutubeSubscriptionsExtension.swift */; };
+		7A93D56423F4A26C00CC57C1 /* YoutubeChannelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52D23F4A26C00CC57C1 /* YoutubeChannelExtension.swift */; };
+		7A93D56523F4A26C00CC57C1 /* YoutubeChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52E23F4A26C00CC57C1 /* YoutubeChannelController.swift */; };
+		7A93D56623F4A26C00CC57C1 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D52F23F4A26C00CC57C1 /* YoutubeService.swift */; };
+		7A93D56723F4A26C00CC57C1 /* YoutubeTrendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53123F4A26C00CC57C1 /* YoutubeTrendingController.swift */; };
+		7A93D56823F4A26C00CC57C1 /* YoutubeTrendingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53223F4A26C00CC57C1 /* YoutubeTrendingExtension.swift */; };
+		7A93D56923F4A26C00CC57C1 /* YoutubePlayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53423F4A26C00CC57C1 /* YoutubePlayerExtension.swift */; };
+		7A93D56A23F4A26C00CC57C1 /* YoutubeVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53523F4A26C00CC57C1 /* YoutubeVideoController.swift */; };
+		7A93D56B23F4A26C00CC57C1 /* YoutubeVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53723F4A26C00CC57C1 /* YoutubeVideoCell.swift */; };
+		7A93D56C23F4A26C00CC57C1 /* YoutubeSubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53823F4A26C00CC57C1 /* YoutubeSubscriptionCell.swift */; };
+		7A93D56D23F4A26C00CC57C1 /* RelatedVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53923F4A26C00CC57C1 /* RelatedVideoCell.swift */; };
+		7A93D56E23F4A26C00CC57C1 /* VideoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53A23F4A26C00CC57C1 /* VideoInfoView.swift */; };
+		7A93D56F23F4A26C00CC57C1 /* ChannelHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53B23F4A26C00CC57C1 /* ChannelHeaderCell.swift */; };
+		7A93D57023F4A26C00CC57C1 /* MixerBrowseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53D23F4A26C00CC57C1 /* MixerBrowseExtension.swift */; };
+		7A93D57123F4A26C00CC57C1 /* MixerStreamsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53E23F4A26C00CC57C1 /* MixerStreamsExtension.swift */; };
+		7A93D57223F4A26C00CC57C1 /* MixerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D53F23F4A26C00CC57C1 /* MixerService.swift */; };
+		7A93D57323F4A26C00CC57C1 /* MixerGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54023F4A26C00CC57C1 /* MixerGameCell.swift */; };
+		7A93D57423F4A26C00CC57C1 /* MixerBrowseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54123F4A26C00CC57C1 /* MixerBrowseController.swift */; };
+		7A93D57523F4A26C00CC57C1 /* MixerStreamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54223F4A26C00CC57C1 /* MixerStreamsController.swift */; };
+		7A93D57623F4A26C00CC57C1 /* MixerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54323F4A26C00CC57C1 /* MixerGame.swift */; };
+		7A93D57723F4A26C00CC57C1 /* MixerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54423F4A26C00CC57C1 /* MixerViewController.swift */; };
+		7A93D57823F4A26C00CC57C1 /* MixerStreamsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54523F4A26C00CC57C1 /* MixerStreamsHeader.swift */; };
+		7A93D57A23F4A26C00CC57C1 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54823F4A26C00CC57C1 /* TwitterViewController.swift */; };
+		7A93D57B23F4A26C00CC57C1 /* TwitterFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D54923F4A26C00CC57C1 /* TwitterFeedController.swift */; };
+		7A93D58E23F4A28F00CC57C1 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D57E23F4A28D00CC57C1 /* ContainerViewController.swift */; };
+		7A93D58F23F4A28F00CC57C1 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D57F23F4A28D00CC57C1 /* CustomSegmentedControl.swift */; };
+		7A93D59023F4A28F00CC57C1 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58123F4A28D00CC57C1 /* ImageService.swift */; };
+		7A93D59123F4A28F00CC57C1 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58223F4A28D00CC57C1 /* UIKitExtensions.swift */; };
+		7A93D59223F4A28F00CC57C1 /* SocialMediaColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58323F4A28D00CC57C1 /* SocialMediaColors.swift */; };
+		7A93D59323F4A28F00CC57C1 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58423F4A28D00CC57C1 /* HelperFunctions.swift */; };
+		7A93D59423F4A28F00CC57C1 /* StretchyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58523F4A28D00CC57C1 /* StretchyHeaderLayout.swift */; };
+		7A93D59523F4A28F00CC57C1 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58623F4A28D00CC57C1 /* AsyncImageView.swift */; };
+		7A93D59623F4A28F00CC57C1 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58723F4A28E00CC57C1 /* BackgroundView.swift */; };
+		7A93D59723F4A28F00CC57C1 /* SocialMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58823F4A28E00CC57C1 /* SocialMediaCell.swift */; };
+		7A93D59823F4A28F00CC57C1 /* SelectSocialMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58923F4A28E00CC57C1 /* SelectSocialMediaVC.swift */; };
+		7A93D59923F4A28F00CC57C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58A23F4A28E00CC57C1 /* HomeViewController.swift */; };
+		7A93D59B23F4A28F00CC57C1 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58C23F4A28E00CC57C1 /* PageViewController.swift */; };
+		7A9453E62471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9453E52471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift */; };
+		7A9DE55E24463823009E6237 /* ExploreTwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DE55D24463822009E6237 /* ExploreTwitchCell.swift */; };
+		7A9DE56024463A85009E6237 /* ExplorePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DE55F24463A85009E6237 /* ExplorePageController.swift */; };
+		7A9DE56224463B6A009E6237 /* ExplorePageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DE56124463B6A009E6237 /* ExplorePageExtension.swift */; };
+		7AA556EE24562A860074C2CC /* NativeAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA556ED24562A860074C2CC /* NativeAdCollectionViewCell.swift */; };
+		7AA556F02457591C0074C2CC /* NativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA556EF2457591C0074C2CC /* NativeAdTableViewCell.swift */; };
+		7AA556F32458CA2C0074C2CC /* YoutubeFollowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA556F22458CA2C0074C2CC /* YoutubeFollowingController.swift */; };
+		7AACCD3724215EBD0087702C /* TwitchTopStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AACCD3624215EBD0087702C /* TwitchTopStreamCell.swift */; };
+		7AAD20662447BE3F00EE0F4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AAD20652447BE3F00EE0F4B /* GoogleService-Info.plist */; };
+		7AAD20682448EE3500EE0F4B /* ExploreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD20672448EE3500EE0F4B /* ExploreHeader.swift */; };
+		7AAD206B244E547F00EE0F4B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD206A244E547F00EE0F4B /* SettingsViewController.swift */; };
+		7AAD206D244E599300EE0F4B /* PlatformSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD206C244E599300EE0F4B /* PlatformSettingsController.swift */; };
+		7AB17214245F5394003DB3D6 /* YoutubeSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB17213245F5394003DB3D6 /* YoutubeSearchCell.swift */; };
+		7AB17216245F8954003DB3D6 /* YoutubeFollowingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB17215245F8954003DB3D6 /* YoutubeFollowingExtension.swift */; };
+		7AB1721A245F8B79003DB3D6 /* YoutubeFollowsChannelsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB17219245F8B79003DB3D6 /* YoutubeFollowsChannelsController.swift */; };
+		7ACBABC4241304CF00C999AB /* TwitterProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBABC3241304CF00C999AB /* TwitterProfileViewController.swift */; };
+		7ACBABC724144F8A00C999AB /* TwitterProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBABC624144F8A00C999AB /* TwitterProfileHeader.swift */; };
+		7ADC997A241451350079DB24 /* TwitterProfileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC9979241451350079DB24 /* TwitterProfileExtension.swift */; };
+		7ADC997C2416BCDE0079DB24 /* TwitterProfileSetupCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC997B2416BCDE0079DB24 /* TwitterProfileSetupCellExtension.swift */; };
+		7ADC997F241969E30079DB24 /* HashtagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC997E241969E30079DB24 /* HashtagViewController.swift */; };
+		7ADC998124196A8F0079DB24 /* HashtagControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC998024196A8F0079DB24 /* HashtagControllerExtension.swift */; };
+		7ADC998324196AF00079DB24 /* HashtagSetupCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC998224196AF00079DB24 /* HashtagSetupCellExtension.swift */; };
+		7ADC9986241C3D9E0079DB24 /* TwitterThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC9985241C3D9E0079DB24 /* TwitterThreadViewController.swift */; };
+		7ADC998C241D3D1F0079DB24 /* TwitterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC998B241D3D1F0079DB24 /* TwitterTextView.swift */; };
+		7ADC998E241D6EF20079DB24 /* TwitterThreadControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC998D241D6EF20079DB24 /* TwitterThreadControllerExtension.swift */; };
+		7ADC9990241D6F3D0079DB24 /* TwitterThreadSetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC998F241D6F3D0079DB24 /* TwitterThreadSetupCell.swift */; };
+		7ADC9992241D827E0079DB24 /* TwitterThreadFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC9991241D827E0079DB24 /* TwitterThreadFooter.swift */; };
+		7ADC999424215AAF0079DB24 /* TwitchTopStreamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC999324215AAF0079DB24 /* TwitchTopStreamsCell.swift */; };
+		7AE179722400B98200DD6557 /* TwitterSetupCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE179712400B98200DD6557 /* TwitterSetupCellExtension.swift */; };
+		7AFF4151245F9CD700C1785E /* YoutubeChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF4150245F9CD700C1785E /* YoutubeChannelCell.swift */; };
+		7AFF4153246472D100C1785E /* OptionalFractionalSecondsDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF4152246472D100C1785E /* OptionalFractionalSecondsDateFormatter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		74CE98BBBB7ACDB58E11F133 /* Pods-Glitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Glitch/Pods-Glitch.debug.xcconfig"; sourceTree = "<group>"; };
+		7A01EF1F245E018100F9D448 /* YoutubeSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchController.swift; sourceTree = "<group>"; };
+		7A01EF21245E03E800F9D448 /* YoutubeSearchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchExtension.swift; sourceTree = "<group>"; };
+		7A14A88A2422D66A00BB246B /* MixerTopStreamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerTopStreamsCell.swift; sourceTree = "<group>"; };
+		7A14A88C2422D6DB00BB246B /* MixerTopStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerTopStreamCell.swift; sourceTree = "<group>"; };
+		7A23183523FD9AFD0039E196 /* TwitterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
+		7A23183723FDC9A70039E196 /* TwitterTweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTweet.swift; sourceTree = "<group>"; };
+		7A23183923FDCCF60039E196 /* TwitterFeedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterFeedExtension.swift; sourceTree = "<group>"; };
+		7A23183B23FDCDB90039E196 /* TweetCellBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellBasic.swift; sourceTree = "<group>"; };
+		7A23183D23FDE16A0039E196 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		7A23183F23FF04E60039E196 /* TwitterMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterMedia.swift; sourceTree = "<group>"; };
+		7A23184123FF1DEF0039E196 /* TwitterSingleMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSingleMediaCell.swift; sourceTree = "<group>"; };
+		7A2714BC244642A900F35AFF /* ExploreYoutubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreYoutubeCell.swift; sourceTree = "<group>"; };
+		7A2714BE24464A6200F35AFF /* ExploreMixerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMixerCell.swift; sourceTree = "<group>"; };
+		7A638E63240C3CDE003AA5C1 /* TwitterQuoteTweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterQuoteTweet.swift; sourceTree = "<group>"; };
+		7A728C862402FFA400198518 /* TwitterMultiPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterMultiPictureCell.swift; sourceTree = "<group>"; };
+		7A728C88240355CF00198518 /* TwitterImageViewerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterImageViewerController.swift; sourceTree = "<group>"; };
+		7A728C8A2405CF0200198518 /* TwitterQuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterQuoteCell.swift; sourceTree = "<group>"; };
+		7A728C8C2405D1EF00198518 /* TwitterQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterQuoteView.swift; sourceTree = "<group>"; };
+		7A72C3EB2409997D00E2536E /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
+		7A7BE68423F4E29E00FE5E56 /* MixerStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerStreamCell.swift; sourceTree = "<group>"; };
+		7A7BE68623F4E5F400FE5E56 /* MixerStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerStream.swift; sourceTree = "<group>"; };
+		7A7BE68823F5E4CD00FE5E56 /* MixerWatchStreamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerWatchStreamController.swift; sourceTree = "<group>"; };
+		7A7BE68A23F8EC9B00FE5E56 /* MixerFollowingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerFollowingController.swift; sourceTree = "<group>"; };
+		7A7BE68C23F9E29A00FE5E56 /* MixerChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerChannel.swift; sourceTree = "<group>"; };
+		7A7BE69023F9E60700FE5E56 /* MixerFollowingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerFollowingExtension.swift; sourceTree = "<group>"; };
+		7A7BE69223F9E73600FE5E56 /* MixerFollowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerFollowCell.swift; sourceTree = "<group>"; };
+		7A7D936F24523A9F00D43774 /* CustomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimator.swift; sourceTree = "<group>"; };
+		7A7D93782453918A00D43774 /* AdsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsAlertView.swift; sourceTree = "<group>"; };
+		7A7D937E2456245D00D43774 /* Glitch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glitch-Bridging-Header.h"; sourceTree = "<group>"; };
+		7A7D937F2456245E00D43774 /* GADTMediumTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTMediumTemplateView.m; sourceTree = "<group>"; };
+		7A7D93802456245E00D43774 /* GADTSmallTemplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADTSmallTemplateView.h; sourceTree = "<group>"; };
+		7A7D93812456245E00D43774 /* GADTMediumTemplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADTMediumTemplateView.h; sourceTree = "<group>"; };
+		7A7D93822456245E00D43774 /* GADTMediumTemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADTMediumTemplateView.xib; sourceTree = "<group>"; };
+		7A7D93832456245E00D43774 /* GADTSmallTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTSmallTemplateView.m; sourceTree = "<group>"; };
+		7A7D93842456245E00D43774 /* GADTSmallTemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADTSmallTemplateView.xib; sourceTree = "<group>"; };
+		7A7D93852456245E00D43774 /* GADTTemplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADTTemplateView.h; sourceTree = "<group>"; };
+		7A7D93862456245E00D43774 /* GADTTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTTemplateView.m; sourceTree = "<group>"; };
+		7A93D4F123F4A1E100CC57C1 /* Glitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A93D4F423F4A1E100CC57C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7A93D4FE23F4A1E100CC57C1 /* Glitch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Glitch.xcdatamodel; sourceTree = "<group>"; };
+		7A93D50023F4A1E400CC57C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A93D50323F4A1E400CC57C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A93D50523F4A1E400CC57C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A93D50D23F4A26C00CC57C1 /* TwitchStreamController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStreamController.swift; sourceTree = "<group>"; };
+		7A93D50E23F4A26C00CC57C1 /* TwitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchService.swift; sourceTree = "<group>"; };
+		7A93D51023F4A26C00CC57C1 /* TwitchStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStream.swift; sourceTree = "<group>"; };
+		7A93D51123F4A26C00CC57C1 /* TwitchStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStreamer.swift; sourceTree = "<group>"; };
+		7A93D51223F4A26C00CC57C1 /* TwitchGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchGame.swift; sourceTree = "<group>"; };
+		7A93D51423F4A26C00CC57C1 /* TwitchStreamsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStreamsExtension.swift; sourceTree = "<group>"; };
+		7A93D51523F4A26C00CC57C1 /* TwitchBrowseStreamsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchBrowseStreamsController.swift; sourceTree = "<group>"; };
+		7A93D51623F4A26C00CC57C1 /* TwitchGamesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchGamesController.swift; sourceTree = "<group>"; };
+		7A93D51723F4A26C00CC57C1 /* TwitchGamesExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchGamesExtension.swift; sourceTree = "<group>"; };
+		7A93D51923F4A26C00CC57C1 /* TwitchFollowingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchFollowingController.swift; sourceTree = "<group>"; };
+		7A93D51A23F4A26C00CC57C1 /* TwitchFollowingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchFollowingExtension.swift; sourceTree = "<group>"; };
+		7A93D51C23F4A26C00CC57C1 /* TwitchStreamerOfflineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStreamerOfflineCell.swift; sourceTree = "<group>"; };
+		7A93D51D23F4A26C00CC57C1 /* TwitchBrowseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchBrowseCell.swift; sourceTree = "<group>"; };
+		7A93D51E23F4A26C00CC57C1 /* TwitchStreamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStreamCell.swift; sourceTree = "<group>"; };
+		7A93D51F23F4A26C00CC57C1 /* TwitchStreamsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchStreamsHeader.swift; sourceTree = "<group>"; };
+		7A93D52023F4A26C00CC57C1 /* TwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchViewController.swift; sourceTree = "<group>"; };
+		7A93D52223F4A26C00CC57C1 /* YoutubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
+		7A93D52423F4A26C00CC57C1 /* YoutubeVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeVideo.swift; sourceTree = "<group>"; };
+		7A93D52523F4A26C00CC57C1 /* YoutubeVideoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeVideoInfo.swift; sourceTree = "<group>"; };
+		7A93D52623F4A26C00CC57C1 /* YoutubeSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeSubscription.swift; sourceTree = "<group>"; };
+		7A93D52723F4A26C00CC57C1 /* YoutubeTrendingVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTrendingVideo.swift; sourceTree = "<group>"; };
+		7A93D52823F4A26C00CC57C1 /* YoutubeChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeChannel.swift; sourceTree = "<group>"; };
+		7A93D52A23F4A26C00CC57C1 /* YoutubeSubscriptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeSubscriptionsController.swift; sourceTree = "<group>"; };
+		7A93D52B23F4A26C00CC57C1 /* YoutubeSubscriptionsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeSubscriptionsExtension.swift; sourceTree = "<group>"; };
+		7A93D52D23F4A26C00CC57C1 /* YoutubeChannelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeChannelExtension.swift; sourceTree = "<group>"; };
+		7A93D52E23F4A26C00CC57C1 /* YoutubeChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeChannelController.swift; sourceTree = "<group>"; };
+		7A93D52F23F4A26C00CC57C1 /* YoutubeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
+		7A93D53123F4A26C00CC57C1 /* YoutubeTrendingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTrendingController.swift; sourceTree = "<group>"; };
+		7A93D53223F4A26C00CC57C1 /* YoutubeTrendingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTrendingExtension.swift; sourceTree = "<group>"; };
+		7A93D53423F4A26C00CC57C1 /* YoutubePlayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtension.swift; sourceTree = "<group>"; };
+		7A93D53523F4A26C00CC57C1 /* YoutubeVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeVideoController.swift; sourceTree = "<group>"; };
+		7A93D53723F4A26C00CC57C1 /* YoutubeVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeVideoCell.swift; sourceTree = "<group>"; };
+		7A93D53823F4A26C00CC57C1 /* YoutubeSubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeSubscriptionCell.swift; sourceTree = "<group>"; };
+		7A93D53923F4A26C00CC57C1 /* RelatedVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedVideoCell.swift; sourceTree = "<group>"; };
+		7A93D53A23F4A26C00CC57C1 /* VideoInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoInfoView.swift; sourceTree = "<group>"; };
+		7A93D53B23F4A26C00CC57C1 /* ChannelHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelHeaderCell.swift; sourceTree = "<group>"; };
+		7A93D53D23F4A26C00CC57C1 /* MixerBrowseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerBrowseExtension.swift; sourceTree = "<group>"; };
+		7A93D53E23F4A26C00CC57C1 /* MixerStreamsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerStreamsExtension.swift; sourceTree = "<group>"; };
+		7A93D53F23F4A26C00CC57C1 /* MixerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerService.swift; sourceTree = "<group>"; };
+		7A93D54023F4A26C00CC57C1 /* MixerGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerGameCell.swift; sourceTree = "<group>"; };
+		7A93D54123F4A26C00CC57C1 /* MixerBrowseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerBrowseController.swift; sourceTree = "<group>"; };
+		7A93D54223F4A26C00CC57C1 /* MixerStreamsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerStreamsController.swift; sourceTree = "<group>"; };
+		7A93D54323F4A26C00CC57C1 /* MixerGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerGame.swift; sourceTree = "<group>"; };
+		7A93D54423F4A26C00CC57C1 /* MixerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerViewController.swift; sourceTree = "<group>"; };
+		7A93D54523F4A26C00CC57C1 /* MixerStreamsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixerStreamsHeader.swift; sourceTree = "<group>"; };
+		7A93D54823F4A26C00CC57C1 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
+		7A93D54923F4A26C00CC57C1 /* TwitterFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterFeedController.swift; sourceTree = "<group>"; };
+		7A93D57E23F4A28D00CC57C1 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		7A93D57F23F4A28D00CC57C1 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		7A93D58123F4A28D00CC57C1 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		7A93D58223F4A28D00CC57C1 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		7A93D58323F4A28D00CC57C1 /* SocialMediaColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaColors.swift; sourceTree = "<group>"; };
+		7A93D58423F4A28D00CC57C1 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		7A93D58523F4A28D00CC57C1 /* StretchyHeaderLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeaderLayout.swift; sourceTree = "<group>"; };
+		7A93D58623F4A28D00CC57C1 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		7A93D58723F4A28E00CC57C1 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		7A93D58823F4A28E00CC57C1 /* SocialMediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaCell.swift; sourceTree = "<group>"; };
+		7A93D58923F4A28E00CC57C1 /* SelectSocialMediaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSocialMediaVC.swift; sourceTree = "<group>"; };
+		7A93D58A23F4A28E00CC57C1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7A93D58C23F4A28E00CC57C1 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		7A9453E52471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeNativeAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A9DE55D24463822009E6237 /* ExploreTwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTwitchCell.swift; sourceTree = "<group>"; };
+		7A9DE55F24463A85009E6237 /* ExplorePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageController.swift; sourceTree = "<group>"; };
+		7A9DE56124463B6A009E6237 /* ExplorePageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageExtension.swift; sourceTree = "<group>"; };
+		7AA556ED24562A860074C2CC /* NativeAdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		7AA556EF2457591C0074C2CC /* NativeAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdTableViewCell.swift; sourceTree = "<group>"; };
+		7AA556F22458CA2C0074C2CC /* YoutubeFollowingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeFollowingController.swift; sourceTree = "<group>"; };
+		7AACCD3624215EBD0087702C /* TwitchTopStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchTopStreamCell.swift; sourceTree = "<group>"; };
+		7AAD20652447BE3F00EE0F4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7AAD20672448EE3500EE0F4B /* ExploreHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHeader.swift; sourceTree = "<group>"; };
+		7AAD206A244E547F00EE0F4B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7AAD206C244E599300EE0F4B /* PlatformSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformSettingsController.swift; sourceTree = "<group>"; };
+		7AB17213245F5394003DB3D6 /* YoutubeSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchCell.swift; sourceTree = "<group>"; };
+		7AB17215245F8954003DB3D6 /* YoutubeFollowingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeFollowingExtension.swift; sourceTree = "<group>"; };
+		7AB17219245F8B79003DB3D6 /* YoutubeFollowsChannelsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeFollowsChannelsController.swift; sourceTree = "<group>"; };
+		7ACBABC3241304CF00C999AB /* TwitterProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterProfileViewController.swift; sourceTree = "<group>"; };
+		7ACBABC624144F8A00C999AB /* TwitterProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterProfileHeader.swift; sourceTree = "<group>"; };
+		7ADC9979241451350079DB24 /* TwitterProfileExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterProfileExtension.swift; sourceTree = "<group>"; };
+		7ADC997B2416BCDE0079DB24 /* TwitterProfileSetupCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterProfileSetupCellExtension.swift; sourceTree = "<group>"; };
+		7ADC997E241969E30079DB24 /* HashtagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagViewController.swift; sourceTree = "<group>"; };
+		7ADC998024196A8F0079DB24 /* HashtagControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagControllerExtension.swift; sourceTree = "<group>"; };
+		7ADC998224196AF00079DB24 /* HashtagSetupCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagSetupCellExtension.swift; sourceTree = "<group>"; };
+		7ADC9985241C3D9E0079DB24 /* TwitterThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterThreadViewController.swift; sourceTree = "<group>"; };
+		7ADC998B241D3D1F0079DB24 /* TwitterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTextView.swift; sourceTree = "<group>"; };
+		7ADC998D241D6EF20079DB24 /* TwitterThreadControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterThreadControllerExtension.swift; sourceTree = "<group>"; };
+		7ADC998F241D6F3D0079DB24 /* TwitterThreadSetupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterThreadSetupCell.swift; sourceTree = "<group>"; };
+		7ADC9991241D827E0079DB24 /* TwitterThreadFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterThreadFooter.swift; sourceTree = "<group>"; };
+		7ADC999324215AAF0079DB24 /* TwitchTopStreamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchTopStreamsCell.swift; sourceTree = "<group>"; };
+		7AE179712400B98200DD6557 /* TwitterSetupCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSetupCellExtension.swift; sourceTree = "<group>"; };
+		7AFF4150245F9CD700C1785E /* YoutubeChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeChannelCell.swift; sourceTree = "<group>"; };
+		7AFF4152246472D100C1785E /* OptionalFractionalSecondsDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalFractionalSecondsDateFormatter.swift; sourceTree = "<group>"; };
+		95883A44F69F6E7AB6A3AF60 /* Pods-Glitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glitch/Pods-Glitch.release.xcconfig"; sourceTree = "<group>"; };
+		E5E7D2625E859A1E4922A06E /* Pods_Glitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Glitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A93D4EE23F4A1E100CC57C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53F1AC74F886A4EEA56DC3CA /* Pods_Glitch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79A88E42784B9288D61A3887 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7D2625E859A1E4922A06E /* Pods_Glitch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A14A8842422D3E900BB246B /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D54223F4A26C00CC57C1 /* MixerStreamsController.swift */,
+				7A93D53E23F4A26C00CC57C1 /* MixerStreamsExtension.swift */,
+				7A93D54123F4A26C00CC57C1 /* MixerBrowseController.swift */,
+				7A93D53D23F4A26C00CC57C1 /* MixerBrowseExtension.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
+		7A14A8852422D40E00BB246B /* Watch Stream */ = {
+			isa = PBXGroup;
+			children = (
+				7A7BE68823F5E4CD00FE5E56 /* MixerWatchStreamController.swift */,
+			);
+			path = "Watch Stream";
+			sourceTree = "<group>";
+		};
+		7A14A8862422D41E00BB246B /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				7A7BE68A23F8EC9B00FE5E56 /* MixerFollowingController.swift */,
+				7A7BE69023F9E60700FE5E56 /* MixerFollowingExtension.swift */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
+		7A14A8872422D42C00BB246B /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				7A7BE68C23F9E29A00FE5E56 /* MixerChannel.swift */,
+				7A7BE68623F4E5F400FE5E56 /* MixerStream.swift */,
+				7A93D54323F4A26C00CC57C1 /* MixerGame.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		7A14A8882422D44400BB246B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A7BE69223F9E73600FE5E56 /* MixerFollowCell.swift */,
+				7A7BE68423F4E29E00FE5E56 /* MixerStreamCell.swift */,
+				7A93D54023F4A26C00CC57C1 /* MixerGameCell.swift */,
+				7A93D54523F4A26C00CC57C1 /* MixerStreamsHeader.swift */,
+				7A14A88A2422D66A00BB246B /* MixerTopStreamsCell.swift */,
+				7A14A88C2422D6DB00BB246B /* MixerTopStreamCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A638E672412E41E003AA5C1 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				7AE179712400B98200DD6557 /* TwitterSetupCellExtension.swift */,
+				7A23183923FDCCF60039E196 /* TwitterFeedExtension.swift */,
+				7A93D54923F4A26C00CC57C1 /* TwitterFeedController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		7A638E682412E434003AA5C1 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				7A728C88240355CF00198518 /* TwitterImageViewerController.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		7A638E692412E466003AA5C1 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				7A638E63240C3CDE003AA5C1 /* TwitterQuoteTweet.swift */,
+				7A23183723FDC9A70039E196 /* TwitterTweet.swift */,
+				7A23183F23FF04E60039E196 /* TwitterMedia.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		7A638E6A2412E4A7003AA5C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A728C862402FFA400198518 /* TwitterMultiPictureCell.swift */,
+				7A728C8C2405D1EF00198518 /* TwitterQuoteView.swift */,
+				7A728C8A2405CF0200198518 /* TwitterQuoteCell.swift */,
+				7A23184123FF1DEF0039E196 /* TwitterSingleMediaCell.swift */,
+				7A23183B23FDCDB90039E196 /* TweetCellBasic.swift */,
+				7ACBABC624144F8A00C999AB /* TwitterProfileHeader.swift */,
+				7ADC998B241D3D1F0079DB24 /* TwitterTextView.swift */,
+				7ADC9991241D827E0079DB24 /* TwitterThreadFooter.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A7547372452160A002E7C79 /* Overall Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A7D937C2456242C00D43774 /* Ads */,
+				7A7D936F24523A9F00D43774 /* CustomAnimator.swift */,
+			);
+			path = "Overall Views";
+			sourceTree = "<group>";
+		};
+		7A7D937C2456242C00D43774 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				7A7D937D2456243300D43774 /* Google Native Ads Templates */,
+				7A7D93782453918A00D43774 /* AdsAlertView.swift */,
+				7AA556ED24562A860074C2CC /* NativeAdCollectionViewCell.swift */,
+				7AA556EF2457591C0074C2CC /* NativeAdTableViewCell.swift */,
+				7A9453E52471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		7A7D937D2456243300D43774 /* Google Native Ads Templates */ = {
+			isa = PBXGroup;
+			children = (
+				7A7D93812456245E00D43774 /* GADTMediumTemplateView.h */,
+				7A7D937F2456245E00D43774 /* GADTMediumTemplateView.m */,
+				7A7D93822456245E00D43774 /* GADTMediumTemplateView.xib */,
+				7A7D93802456245E00D43774 /* GADTSmallTemplateView.h */,
+				7A7D93832456245E00D43774 /* GADTSmallTemplateView.m */,
+				7A7D93842456245E00D43774 /* GADTSmallTemplateView.xib */,
+				7A7D93852456245E00D43774 /* GADTTemplateView.h */,
+				7A7D93862456245E00D43774 /* GADTTemplateView.m */,
+				7A7D937E2456245D00D43774 /* Glitch-Bridging-Header.h */,
+			);
+			path = "Google Native Ads Templates";
+			sourceTree = "<group>";
+		};
+		7A93D4E823F4A1E100CC57C1 = {
+			isa = PBXGroup;
+			children = (
+				7A93D4F323F4A1E100CC57C1 /* Glitch */,
+				7A93D4F223F4A1E100CC57C1 /* Products */,
+				9DAF7B306FF590F6E26EA4E8 /* Pods */,
+				79A88E42784B9288D61A3887 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7A93D4F223F4A1E100CC57C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D4F123F4A1E100CC57C1 /* Glitch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A93D4F323F4A1E100CC57C1 /* Glitch */ = {
+			isa = PBXGroup;
+			children = (
+				7A7547372452160A002E7C79 /* Overall Views */,
+				7AAD2069244E546F00EE0F4B /* Settings */,
+				7A93D53C23F4A26C00CC57C1 /* Mixer */,
+				7A93D50B23F4A26C00CC57C1 /* Twitch */,
+				7A93D54623F4A26C00CC57C1 /* Twitter */,
+				7A93D52123F4A26C00CC57C1 /* YouTube */,
+				7A9DE55B244637CE009E6237 /* Explore */,
+				7A93D4F423F4A1E100CC57C1 /* AppDelegate.swift */,
+				7A93D58723F4A28E00CC57C1 /* BackgroundView.swift */,
+				7A93D57E23F4A28D00CC57C1 /* ContainerViewController.swift */,
+				7A93D57F23F4A28D00CC57C1 /* CustomSegmentedControl.swift */,
+				7A93D58023F4A28D00CC57C1 /* Extensions-Helper */,
+				7A93D58A23F4A28E00CC57C1 /* HomeViewController.swift */,
+				7A93D58C23F4A28E00CC57C1 /* PageViewController.swift */,
+				7A93D58923F4A28E00CC57C1 /* SelectSocialMediaVC.swift */,
+				7A93D58823F4A28E00CC57C1 /* SocialMediaCell.swift */,
+				7AAD20652447BE3F00EE0F4B /* GoogleService-Info.plist */,
+				7A93D50023F4A1E400CC57C1 /* Assets.xcassets */,
+				7A93D50223F4A1E400CC57C1 /* LaunchScreen.storyboard */,
+				7A93D50523F4A1E400CC57C1 /* Info.plist */,
+				7A93D4FD23F4A1E100CC57C1 /* Glitch.xcdatamodeld */,
+			);
+			path = Glitch;
+			sourceTree = "<group>";
+		};
+		7A93D50B23F4A26C00CC57C1 /* Twitch */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D50C23F4A26C00CC57C1 /* Watch Stream */,
+				7A93D50F23F4A26C00CC57C1 /* Objects */,
+				7A93D51323F4A26C00CC57C1 /* Browse */,
+				7A93D51823F4A26C00CC57C1 /* Following */,
+				7A93D51B23F4A26C00CC57C1 /* Views */,
+				7A93D52023F4A26C00CC57C1 /* TwitchViewController.swift */,
+				7A93D50E23F4A26C00CC57C1 /* TwitchService.swift */,
+			);
+			path = Twitch;
+			sourceTree = "<group>";
+		};
+		7A93D50C23F4A26C00CC57C1 /* Watch Stream */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D50D23F4A26C00CC57C1 /* TwitchStreamController.swift */,
+			);
+			path = "Watch Stream";
+			sourceTree = "<group>";
+		};
+		7A93D50F23F4A26C00CC57C1 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D51023F4A26C00CC57C1 /* TwitchStream.swift */,
+				7A93D51123F4A26C00CC57C1 /* TwitchStreamer.swift */,
+				7A93D51223F4A26C00CC57C1 /* TwitchGame.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		7A93D51323F4A26C00CC57C1 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D51423F4A26C00CC57C1 /* TwitchStreamsExtension.swift */,
+				7A93D51523F4A26C00CC57C1 /* TwitchBrowseStreamsController.swift */,
+				7A93D51623F4A26C00CC57C1 /* TwitchGamesController.swift */,
+				7A93D51723F4A26C00CC57C1 /* TwitchGamesExtension.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
+		7A93D51823F4A26C00CC57C1 /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D51923F4A26C00CC57C1 /* TwitchFollowingController.swift */,
+				7A93D51A23F4A26C00CC57C1 /* TwitchFollowingExtension.swift */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
+		7A93D51B23F4A26C00CC57C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D51C23F4A26C00CC57C1 /* TwitchStreamerOfflineCell.swift */,
+				7A93D51D23F4A26C00CC57C1 /* TwitchBrowseCell.swift */,
+				7A93D51E23F4A26C00CC57C1 /* TwitchStreamCell.swift */,
+				7A93D51F23F4A26C00CC57C1 /* TwitchStreamsHeader.swift */,
+				7ADC999324215AAF0079DB24 /* TwitchTopStreamsCell.swift */,
+				7AACCD3624215EBD0087702C /* TwitchTopStreamCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A93D52123F4A26C00CC57C1 /* YouTube */ = {
+			isa = PBXGroup;
+			children = (
+				7AA556F12458CA160074C2CC /* Following */,
+				7A93D52223F4A26C00CC57C1 /* YoutubeViewController.swift */,
+				7A93D52323F4A26C00CC57C1 /* Objects */,
+				7A93D52923F4A26C00CC57C1 /* Subscriptions */,
+				7A93D52C23F4A26C00CC57C1 /* Channel */,
+				7A93D52F23F4A26C00CC57C1 /* YoutubeService.swift */,
+				7A93D53023F4A26C00CC57C1 /* Trending */,
+				7A93D53323F4A26C00CC57C1 /* Playing Video */,
+				7A93D53623F4A26C00CC57C1 /* Views */,
+			);
+			path = YouTube;
+			sourceTree = "<group>";
+		};
+		7A93D52323F4A26C00CC57C1 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D52423F4A26C00CC57C1 /* YoutubeVideo.swift */,
+				7A93D52523F4A26C00CC57C1 /* YoutubeVideoInfo.swift */,
+				7A93D52623F4A26C00CC57C1 /* YoutubeSubscription.swift */,
+				7A93D52723F4A26C00CC57C1 /* YoutubeTrendingVideo.swift */,
+				7A93D52823F4A26C00CC57C1 /* YoutubeChannel.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		7A93D52923F4A26C00CC57C1 /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D52A23F4A26C00CC57C1 /* YoutubeSubscriptionsController.swift */,
+				7A93D52B23F4A26C00CC57C1 /* YoutubeSubscriptionsExtension.swift */,
+			);
+			path = Subscriptions;
+			sourceTree = "<group>";
+		};
+		7A93D52C23F4A26C00CC57C1 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D52D23F4A26C00CC57C1 /* YoutubeChannelExtension.swift */,
+				7A93D52E23F4A26C00CC57C1 /* YoutubeChannelController.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		7A93D53023F4A26C00CC57C1 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D53123F4A26C00CC57C1 /* YoutubeTrendingController.swift */,
+				7A93D53223F4A26C00CC57C1 /* YoutubeTrendingExtension.swift */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
+		7A93D53323F4A26C00CC57C1 /* Playing Video */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D53423F4A26C00CC57C1 /* YoutubePlayerExtension.swift */,
+				7A93D53523F4A26C00CC57C1 /* YoutubeVideoController.swift */,
+			);
+			path = "Playing Video";
+			sourceTree = "<group>";
+		};
+		7A93D53623F4A26C00CC57C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D53723F4A26C00CC57C1 /* YoutubeVideoCell.swift */,
+				7A93D53823F4A26C00CC57C1 /* YoutubeSubscriptionCell.swift */,
+				7A93D53923F4A26C00CC57C1 /* RelatedVideoCell.swift */,
+				7A93D53A23F4A26C00CC57C1 /* VideoInfoView.swift */,
+				7A93D53B23F4A26C00CC57C1 /* ChannelHeaderCell.swift */,
+				7AB17213245F5394003DB3D6 /* YoutubeSearchCell.swift */,
+				7AFF4150245F9CD700C1785E /* YoutubeChannelCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A93D53C23F4A26C00CC57C1 /* Mixer */ = {
+			isa = PBXGroup;
+			children = (
+				7A14A8882422D44400BB246B /* Views */,
+				7A14A8872422D42C00BB246B /* Objects */,
+				7A14A8862422D41E00BB246B /* Following */,
+				7A14A8852422D40E00BB246B /* Watch Stream */,
+				7A14A8842422D3E900BB246B /* Browse */,
+				7A93D53F23F4A26C00CC57C1 /* MixerService.swift */,
+				7A93D54423F4A26C00CC57C1 /* MixerViewController.swift */,
+			);
+			path = Mixer;
+			sourceTree = "<group>";
+		};
+		7A93D54623F4A26C00CC57C1 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				7ADC9984241C3D830079DB24 /* Tweet Thread */,
+				7ADC997D241969D00079DB24 /* Hashtags */,
+				7ACBABC524144F7000C999AB /* Profile */,
+				7A638E6A2412E4A7003AA5C1 /* Views */,
+				7A638E692412E466003AA5C1 /* Objects */,
+				7A638E682412E434003AA5C1 /* Media */,
+				7A638E672412E41E003AA5C1 /* Feed */,
+				7A23183523FD9AFD0039E196 /* TwitterService.swift */,
+				7A93D54823F4A26C00CC57C1 /* TwitterViewController.swift */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		7A93D58023F4A28D00CC57C1 /* Extensions-Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7A93D58123F4A28D00CC57C1 /* ImageService.swift */,
+				7A93D58223F4A28D00CC57C1 /* UIKitExtensions.swift */,
+				7A93D58323F4A28D00CC57C1 /* SocialMediaColors.swift */,
+				7A93D58423F4A28D00CC57C1 /* HelperFunctions.swift */,
+				7A93D58523F4A28D00CC57C1 /* StretchyHeaderLayout.swift */,
+				7A93D58623F4A28D00CC57C1 /* AsyncImageView.swift */,
+				7A23183D23FDE16A0039E196 /* StringExtensions.swift */,
+				7A72C3EB2409997D00E2536E /* UIImageColors.swift */,
+				7AFF4152246472D100C1785E /* OptionalFractionalSecondsDateFormatter.swift */,
+			);
+			path = "Extensions-Helper";
+			sourceTree = "<group>";
+		};
+		7A9DE55B244637CE009E6237 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DE55C244637D6009E6237 /* Views */,
+				7A9DE55F24463A85009E6237 /* ExplorePageController.swift */,
+				7A9DE56124463B6A009E6237 /* ExplorePageExtension.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		7A9DE55C244637D6009E6237 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DE55D24463822009E6237 /* ExploreTwitchCell.swift */,
+				7A2714BC244642A900F35AFF /* ExploreYoutubeCell.swift */,
+				7A2714BE24464A6200F35AFF /* ExploreMixerCell.swift */,
+				7AAD20672448EE3500EE0F4B /* ExploreHeader.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7AA556F12458CA160074C2CC /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				7AB17218245F8AD6003DB3D6 /* Search */,
+				7AB17217245F8ACA003DB3D6 /* Channels */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
+		7AAD2069244E546F00EE0F4B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7AAD206A244E547F00EE0F4B /* SettingsViewController.swift */,
+				7AAD206C244E599300EE0F4B /* PlatformSettingsController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7AB17217245F8ACA003DB3D6 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				7AB17215245F8954003DB3D6 /* YoutubeFollowingExtension.swift */,
+				7AA556F22458CA2C0074C2CC /* YoutubeFollowingController.swift */,
+				7AB17219245F8B79003DB3D6 /* YoutubeFollowsChannelsController.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		7AB17218245F8AD6003DB3D6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7A01EF1F245E018100F9D448 /* YoutubeSearchController.swift */,
+				7A01EF21245E03E800F9D448 /* YoutubeSearchExtension.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		7ACBABC524144F7000C999AB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7ACBABC3241304CF00C999AB /* TwitterProfileViewController.swift */,
+				7ADC9979241451350079DB24 /* TwitterProfileExtension.swift */,
+				7ADC997B2416BCDE0079DB24 /* TwitterProfileSetupCellExtension.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7ADC997D241969D00079DB24 /* Hashtags */ = {
+			isa = PBXGroup;
+			children = (
+				7ADC997E241969E30079DB24 /* HashtagViewController.swift */,
+				7ADC998024196A8F0079DB24 /* HashtagControllerExtension.swift */,
+				7ADC998224196AF00079DB24 /* HashtagSetupCellExtension.swift */,
+			);
+			path = Hashtags;
+			sourceTree = "<group>";
+		};
+		7ADC9984241C3D830079DB24 /* Tweet Thread */ = {
+			isa = PBXGroup;
+			children = (
+				7ADC9985241C3D9E0079DB24 /* TwitterThreadViewController.swift */,
+				7ADC998D241D6EF20079DB24 /* TwitterThreadControllerExtension.swift */,
+				7ADC998F241D6F3D0079DB24 /* TwitterThreadSetupCell.swift */,
+			);
+			path = "Tweet Thread";
+			sourceTree = "<group>";
+		};
+		9DAF7B306FF590F6E26EA4E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74CE98BBBB7ACDB58E11F133 /* Pods-Glitch.debug.xcconfig */,
+				95883A44F69F6E7AB6A3AF60 /* Pods-Glitch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A93D4F023F4A1E100CC57C1 /* Glitch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A93D50823F4A1E400CC57C1 /* Build configuration list for PBXNativeTarget "Glitch" */;
+			buildPhases = (
+				CB9C01C81D7D69E7134FB382 /* [CP] Check Pods Manifest.lock */,
+				7A93D4ED23F4A1E100CC57C1 /* Sources */,
+				7A93D4EE23F4A1E100CC57C1 /* Frameworks */,
+				7A93D4EF23F4A1E100CC57C1 /* Resources */,
+				B8927D4D1473904AD66C6089 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Glitch;
+			productName = Glitch;
+			productReference = 7A93D4F123F4A1E100CC57C1 /* Glitch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A93D4E923F4A1E100CC57C1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Jordan Bryant";
+				TargetAttributes = {
+					7A93D4F023F4A1E100CC57C1 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+				};
+			};
+			buildConfigurationList = 7A93D4EC23F4A1E100CC57C1 /* Build configuration list for PBXProject "Glitch" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A93D4E823F4A1E100CC57C1;
+			productRefGroup = 7A93D4F223F4A1E100CC57C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A93D4F023F4A1E100CC57C1 /* Glitch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A93D4EF23F4A1E100CC57C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A7D938A2456245E00D43774 /* GADTSmallTemplateView.xib in Resources */,
+				7A93D50423F4A1E400CC57C1 /* LaunchScreen.storyboard in Resources */,
+				7AAD20662447BE3F00EE0F4B /* GoogleService-Info.plist in Resources */,
+				7A93D50123F4A1E400CC57C1 /* Assets.xcassets in Resources */,
+				7A7D93882456245E00D43774 /* GADTMediumTemplateView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8927D4D1473904AD66C6089 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Glitch/Pods-Glitch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Glitch/Pods-Glitch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB9C01C81D7D69E7134FB382 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Glitch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A93D4ED23F4A1E100CC57C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A93D56423F4A26C00CC57C1 /* YoutubeChannelExtension.swift in Sources */,
+				7A23184223FF1DEF0039E196 /* TwitterSingleMediaCell.swift in Sources */,
+				7A7BE68723F4E5F400FE5E56 /* MixerStream.swift in Sources */,
+				7A93D55923F4A26C00CC57C1 /* TwitchStreamCell.swift in Sources */,
+				7A93D54E23F4A26C00CC57C1 /* TwitchStream.swift in Sources */,
+				7A93D56323F4A26C00CC57C1 /* YoutubeSubscriptionsExtension.swift in Sources */,
+				7A93D57723F4A26C00CC57C1 /* MixerViewController.swift in Sources */,
+				7A93D56723F4A26C00CC57C1 /* YoutubeTrendingController.swift in Sources */,
+				7A9DE55E24463823009E6237 /* ExploreTwitchCell.swift in Sources */,
+				7ADC999424215AAF0079DB24 /* TwitchTopStreamsCell.swift in Sources */,
+				7AACCD3724215EBD0087702C /* TwitchTopStreamCell.swift in Sources */,
+				7A01EF20245E018100F9D448 /* YoutubeSearchController.swift in Sources */,
+				7A93D59023F4A28F00CC57C1 /* ImageService.swift in Sources */,
+				7AA556EE24562A860074C2CC /* NativeAdCollectionViewCell.swift in Sources */,
+				7A93D54F23F4A26C00CC57C1 /* TwitchStreamer.swift in Sources */,
+				7ACBABC724144F8A00C999AB /* TwitterProfileHeader.swift in Sources */,
+				7ADC998E241D6EF20079DB24 /* TwitterThreadControllerExtension.swift in Sources */,
+				7A93D56023F4A26C00CC57C1 /* YoutubeTrendingVideo.swift in Sources */,
+				7A93D57223F4A26C00CC57C1 /* MixerService.swift in Sources */,
+				7AFF4151245F9CD700C1785E /* YoutubeChannelCell.swift in Sources */,
+				7A7BE69323F9E73600FE5E56 /* MixerFollowCell.swift in Sources */,
+				7A9DE56224463B6A009E6237 /* ExplorePageExtension.swift in Sources */,
+				7AE179722400B98200DD6557 /* TwitterSetupCellExtension.swift in Sources */,
+				7ADC9986241C3D9E0079DB24 /* TwitterThreadViewController.swift in Sources */,
+				7A93D56223F4A26C00CC57C1 /* YoutubeSubscriptionsController.swift in Sources */,
+				7A93D57023F4A26C00CC57C1 /* MixerBrowseExtension.swift in Sources */,
+				7A93D55523F4A26C00CC57C1 /* TwitchFollowingController.swift in Sources */,
+				7A23183E23FDE16A0039E196 /* StringExtensions.swift in Sources */,
+				7ADC997C2416BCDE0079DB24 /* TwitterProfileSetupCellExtension.swift in Sources */,
+				7A93D56B23F4A26C00CC57C1 /* YoutubeVideoCell.swift in Sources */,
+				7A7D93872456245E00D43774 /* GADTMediumTemplateView.m in Sources */,
+				7A93D59423F4A28F00CC57C1 /* StretchyHeaderLayout.swift in Sources */,
+				7A93D56123F4A26C00CC57C1 /* YoutubeChannel.swift in Sources */,
+				7A01EF22245E03E800F9D448 /* YoutubeSearchExtension.swift in Sources */,
+				7A7D938B2456245E00D43774 /* GADTTemplateView.m in Sources */,
+				7A93D4F523F4A1E100CC57C1 /* AppDelegate.swift in Sources */,
+				7AAD20682448EE3500EE0F4B /* ExploreHeader.swift in Sources */,
+				7AAD206D244E599300EE0F4B /* PlatformSettingsController.swift in Sources */,
+				7A93D56823F4A26C00CC57C1 /* YoutubeTrendingExtension.swift in Sources */,
+				7A7D93892456245E00D43774 /* GADTSmallTemplateView.m in Sources */,
+				7A93D4FF23F4A1E100CC57C1 /* Glitch.xcdatamodeld in Sources */,
+				7A7BE68923F5E4CD00FE5E56 /* MixerWatchStreamController.swift in Sources */,
+				7A93D55F23F4A26C00CC57C1 /* YoutubeSubscription.swift in Sources */,
+				7A23183C23FDCDB90039E196 /* TweetCellBasic.swift in Sources */,
+				7A9453E62471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift in Sources */,
+				7A93D58E23F4A28F00CC57C1 /* ContainerViewController.swift in Sources */,
+				7ADC998124196A8F0079DB24 /* HashtagControllerExtension.swift in Sources */,
+				7A7D93792453918A00D43774 /* AdsAlertView.swift in Sources */,
+				7A638E64240C3CDE003AA5C1 /* TwitterQuoteTweet.swift in Sources */,
+				7A93D59523F4A28F00CC57C1 /* AsyncImageView.swift in Sources */,
+				7A7BE68B23F8EC9B00FE5E56 /* MixerFollowingController.swift in Sources */,
+				7A728C8B2405CF0200198518 /* TwitterQuoteCell.swift in Sources */,
+				7A728C89240355CF00198518 /* TwitterImageViewerController.swift in Sources */,
+				7AAD206B244E547F00EE0F4B /* SettingsViewController.swift in Sources */,
+				7A93D56923F4A26C00CC57C1 /* YoutubePlayerExtension.swift in Sources */,
+				7A93D54D23F4A26C00CC57C1 /* TwitchService.swift in Sources */,
+				7AFF4153246472D100C1785E /* OptionalFractionalSecondsDateFormatter.swift in Sources */,
+				7A93D58F23F4A28F00CC57C1 /* CustomSegmentedControl.swift in Sources */,
+				7A2714BF24464A6200F35AFF /* ExploreMixerCell.swift in Sources */,
+				7A93D57A23F4A26C00CC57C1 /* TwitterViewController.swift in Sources */,
+				7A23184023FF04E60039E196 /* TwitterMedia.swift in Sources */,
+				7A14A88B2422D66A00BB246B /* MixerTopStreamsCell.swift in Sources */,
+				7A93D56D23F4A26C00CC57C1 /* RelatedVideoCell.swift in Sources */,
+				7A93D57823F4A26C00CC57C1 /* MixerStreamsHeader.swift in Sources */,
+				7A93D55B23F4A26C00CC57C1 /* TwitchViewController.swift in Sources */,
+				7A93D55C23F4A26C00CC57C1 /* YoutubeViewController.swift in Sources */,
+				7A93D55223F4A26C00CC57C1 /* TwitchBrowseStreamsController.swift in Sources */,
+				7A93D57523F4A26C00CC57C1 /* MixerStreamsController.swift in Sources */,
+				7A93D55323F4A26C00CC57C1 /* TwitchGamesController.swift in Sources */,
+				7A93D57423F4A26C00CC57C1 /* MixerBrowseController.swift in Sources */,
+				7A93D57B23F4A26C00CC57C1 /* TwitterFeedController.swift in Sources */,
+				7A9DE56024463A85009E6237 /* ExplorePageController.swift in Sources */,
+				7ADC998324196AF00079DB24 /* HashtagSetupCellExtension.swift in Sources */,
+				7A728C872402FFA400198518 /* TwitterMultiPictureCell.swift in Sources */,
+				7A93D59323F4A28F00CC57C1 /* HelperFunctions.swift in Sources */,
+				7A93D55623F4A26C00CC57C1 /* TwitchFollowingExtension.swift in Sources */,
+				7AA556F02457591C0074C2CC /* NativeAdTableViewCell.swift in Sources */,
+				7A93D57323F4A26C00CC57C1 /* MixerGameCell.swift in Sources */,
+				7A93D55023F4A26C00CC57C1 /* TwitchGame.swift in Sources */,
+				7ADC9992241D827E0079DB24 /* TwitterThreadFooter.swift in Sources */,
+				7A93D56E23F4A26C00CC57C1 /* VideoInfoView.swift in Sources */,
+				7A728C8D2405D1EF00198518 /* TwitterQuoteView.swift in Sources */,
+				7A93D56523F4A26C00CC57C1 /* YoutubeChannelController.swift in Sources */,
+				7A93D59723F4A28F00CC57C1 /* SocialMediaCell.swift in Sources */,
+				7A93D55D23F4A26C00CC57C1 /* YoutubeVideo.swift in Sources */,
+				7A7BE69123F9E60700FE5E56 /* MixerFollowingExtension.swift in Sources */,
+				7A93D55123F4A26C00CC57C1 /* TwitchStreamsExtension.swift in Sources */,
+				7A93D55E23F4A26C00CC57C1 /* YoutubeVideoInfo.swift in Sources */,
+				7A7BE68523F4E29E00FE5E56 /* MixerStreamCell.swift in Sources */,
+				7A93D56623F4A26C00CC57C1 /* YoutubeService.swift in Sources */,
+				7A93D56A23F4A26C00CC57C1 /* YoutubeVideoController.swift in Sources */,
+				7A14A88D2422D6DB00BB246B /* MixerTopStreamCell.swift in Sources */,
+				7A93D54C23F4A26C00CC57C1 /* TwitchStreamController.swift in Sources */,
+				7ACBABC4241304CF00C999AB /* TwitterProfileViewController.swift in Sources */,
+				7A93D56F23F4A26C00CC57C1 /* ChannelHeaderCell.swift in Sources */,
+				7ADC998C241D3D1F0079DB24 /* TwitterTextView.swift in Sources */,
+				7A93D59823F4A28F00CC57C1 /* SelectSocialMediaVC.swift in Sources */,
+				7A23183823FDC9A70039E196 /* TwitterTweet.swift in Sources */,
+				7A93D55A23F4A26C00CC57C1 /* TwitchStreamsHeader.swift in Sources */,
+				7A93D57623F4A26C00CC57C1 /* MixerGame.swift in Sources */,
+				7AB17214245F5394003DB3D6 /* YoutubeSearchCell.swift in Sources */,
+				7ADC997A241451350079DB24 /* TwitterProfileExtension.swift in Sources */,
+				7A93D56C23F4A26C00CC57C1 /* YoutubeSubscriptionCell.swift in Sources */,
+				7AB1721A245F8B79003DB3D6 /* YoutubeFollowsChannelsController.swift in Sources */,
+				7ADC997F241969E30079DB24 /* HashtagViewController.swift in Sources */,
+				7A93D55423F4A26C00CC57C1 /* TwitchGamesExtension.swift in Sources */,
+				7A93D59B23F4A28F00CC57C1 /* PageViewController.swift in Sources */,
+				7AA556F32458CA2C0074C2CC /* YoutubeFollowingController.swift in Sources */,
+				7A93D55823F4A26C00CC57C1 /* TwitchBrowseCell.swift in Sources */,
+				7A2714BD244642A900F35AFF /* ExploreYoutubeCell.swift in Sources */,
+				7A23183623FD9AFD0039E196 /* TwitterService.swift in Sources */,
+				7A93D55723F4A26C00CC57C1 /* TwitchStreamerOfflineCell.swift in Sources */,
+				7A23183A23FDCCF60039E196 /* TwitterFeedExtension.swift in Sources */,
+				7A93D59923F4A28F00CC57C1 /* HomeViewController.swift in Sources */,
+				7ADC9990241D6F3D0079DB24 /* TwitterThreadSetupCell.swift in Sources */,
+				7A7D937024523A9F00D43774 /* CustomAnimator.swift in Sources */,
+				7A72C3EC2409997D00E2536E /* UIImageColors.swift in Sources */,
+				7A7BE68D23F9E29A00FE5E56 /* MixerChannel.swift in Sources */,
+				7A93D59123F4A28F00CC57C1 /* UIKitExtensions.swift in Sources */,
+				7A93D57123F4A26C00CC57C1 /* MixerStreamsExtension.swift in Sources */,
+				7AB17216245F8954003DB3D6 /* YoutubeFollowingExtension.swift in Sources */,
+				7A93D59223F4A28F00CC57C1 /* SocialMediaColors.swift in Sources */,
+				7A93D59623F4A28F00CC57C1 /* BackgroundView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7A93D50223F4A1E400CC57C1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A93D50323F4A1E400CC57C1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A93D50623F4A1E400CC57C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7A93D50723F4A1E400CC57C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A93D50923F4A1E400CC57C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74CE98BBBB7ACDB58E11F133 /* Pods-Glitch.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRZXZGJUL5;
+				INFOPLIST_FILE = Glitch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = player3.glitch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Glitch/Overall Views/Ads/Google Native Ads Templates/Glitch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7A93D50A23F4A1E400CC57C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95883A44F69F6E7AB6A3AF60 /* Pods-Glitch.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRZXZGJUL5;
+				INFOPLIST_FILE = Glitch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = player3.glitch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Glitch/Overall Views/Ads/Google Native Ads Templates/Glitch-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A93D4EC23F4A1E100CC57C1 /* Build configuration list for PBXProject "Glitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A93D50623F4A1E400CC57C1 /* Debug */,
+				7A93D50723F4A1E400CC57C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A93D50823F4A1E400CC57C1 /* Build configuration list for PBXNativeTarget "Glitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A93D50923F4A1E400CC57C1 /* Debug */,
+				7A93D50A23F4A1E400CC57C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7A93D4FD23F4A1E100CC57C1 /* Glitch.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7A93D4FE23F4A1E100CC57C1 /* Glitch.xcdatamodel */,
+			);
+			currentVersion = 7A93D4FE23F4A1E100CC57C1 /* Glitch.xcdatamodel */;
+			path = Glitch.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7A93D4E923F4A1E100CC57C1 /* Project object */;
+}
