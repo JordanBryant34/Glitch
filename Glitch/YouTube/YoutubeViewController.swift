@@ -13,7 +13,7 @@ class YoutubeViewController: UIViewController {
     
     let segmentControl: CustomSegmentedControl = {
         let sc = CustomSegmentedControl(items: [])
-        sc.insertSegment(withTitle: "Trending", at: 0, animated: false)
+        sc.insertSegment(withTitle: "Explore", at: 0, animated: false)
         sc.insertSegment(withTitle: "Following", at: 1, animated: false)
         sc.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         sc.translatesAutoresizingMaskIntoConstraints = false

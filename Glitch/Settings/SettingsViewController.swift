@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Purchases
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -36,14 +37,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 2
+        case 1:
+            return 1
+        case 2:
+            return 2
         default:
             return 0
         }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,11 +64,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             case 0:
                 cell.textLabel?.text = "Twitter"
             case 1:
-                cell.textLabel?.text = "Youtube"
-            case 2:
                 cell.textLabel?.text = "Twitch"
-            case 3:
-                cell.textLabel?.text = "Mixer"
+            default:
+                cell.textLabel?.text = ""
+            }
+        } else if indexPath.section == 1 {
+            cell.textLabel?.text = "Restore Purchase"
+        } else if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                cell.textLabel?.text = "Privacy Policy"
+            case 1:
+                cell.textLabel?.text = "Terms of Service"
             default:
                 cell.textLabel?.text = ""
             }
@@ -80,6 +92,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch section {
         case 0:
             return "Platforms"
+        case 1:
+            return "Subscription"
+        case 2:
+            return "Policies"
         default:
             return ""
         }
@@ -100,6 +116,26 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             platformSettingsController.platform = cell?.textLabel?.text?.lowercased() ?? ""
             
             present(platformSettingsController, animated: true, completion: nil)
+        } else if indexPath.section == 1 {
+            handleRestorePurchase()
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                if let policyURL = URL(string: "https://docs.google.com/document/d/e/2PACX-1vSWzayFdHRUjFJksbkrXXlU9ZjZJgB_rbDBPYcbdQvzWsONbktaYsbTb_VYBD3v_W02Qm_dZOqKqovJ/pub") {
+                        UIApplication.shared.open(policyURL)
+                }
+            } else if indexPath.row == 1 {
+                if let policyURL = URL(string: "https://docs.google.com/document/d/e/2PACX-1vSEmnnwrmlGH3MPaPU2qVDWAWT5rmPw57qSfWumSVAYb0IOmsDu3rBy39q8o7C00t1vnutNwKHfPzGJ/pub") {
+                        UIApplication.shared.open(policyURL)
+                }
+            }
+        }
+    }
+    
+    func handleRestorePurchase() {
+        Purchases.shared.restoreTransactions { (purchaserInfo, error) in
+            if purchaserInfo?.entitlements.all["RemoveAds"]?.isActive != true {
+                self.present(SubscriptionViewController(), animated: true, completion: nil)
+            }
         }
     }
 

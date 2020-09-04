@@ -33,7 +33,7 @@ class SelectSocialMediaVC: UIViewController, UICollectionViewDelegate, UICollect
         return view
     }()
     
-    let logos = [UIImage(named: "glitchLogo"), UIImage(named: "twitterLogo"), UIImage(named: "youtubeLogo"), UIImage(named: "mixerLogo"), UIImage(named: "twitchLogo"), UIImage(named: "settingsIcon")]
+    let logos = [UIImage(named: "glitchLogo"), UIImage(named: "twitchLogo"), UIImage(named: "youtubeLogo"), UIImage(named: "twitterLogo"), UIImage(named: "esportsLogo"), UIImage(named: "settingsIcon")]
     let cellId = "cellId"
     
     var containerVC: ContainerViewController?
@@ -65,13 +65,13 @@ class SelectSocialMediaVC: UIViewController, UICollectionViewDelegate, UICollect
         
         switch indexPath.item {
         case 1:
-            cell.selectedView.backgroundColor = .twitterLightBlue()
+            cell.selectedView.backgroundColor = .twitchPurple()
         case 2:
             cell.selectedView.backgroundColor = .youtubeRed()
         case 3:
-            cell.selectedView.backgroundColor = .mixerLightBlue()
+            cell.selectedView.backgroundColor = .twitterLightBlue()
         case 4:
-            cell.selectedView.backgroundColor = .twitchPurple()
+            cell.selectedView.backgroundColor = .esportsBlue()
         case 5:
             cell.selectedView.backgroundColor = .twitchGrayTextColor()
         default:
@@ -92,13 +92,13 @@ class SelectSocialMediaVC: UIViewController, UICollectionViewDelegate, UICollect
         case 0:
             changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchLightGray())
         case 1:
-            changeColors(newBackgroundColor: .twitterMediumBlue(), newHeaderColor: .twitterDarkBlue())
+            changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchGray())
         case 2:
             changeColors(newBackgroundColor: .youtubeBlack(), newHeaderColor: .youtubeBlack())
         case 3:
-            changeColors(newBackgroundColor: .mixerDarkBlue(), newHeaderColor: .mixerBlue())
+            changeColors(newBackgroundColor: .twitterMediumBlue(), newHeaderColor: .twitterDarkBlue())
         case 4:
-            changeColors(newBackgroundColor: .twitchLightGray(), newHeaderColor: .twitchGray())
+            changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchLightGray())
         case 5:
             changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchLightGray())
         default:

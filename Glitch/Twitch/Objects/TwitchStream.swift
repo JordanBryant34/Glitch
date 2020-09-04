@@ -10,14 +10,14 @@ import Foundation
 
 class TwitchStream {
     
-    var steamerName: String
+    var streamerName: String
     var title: String
     var thumbnailURL: String
     var viewerCount: Int
     var streamerPicURL: String?
     
     init(streamerName: String, title: String, thumbnailURL: String, viewerCount: Int, streamerPicURL: String?) {
-        self.steamerName = streamerName
+        self.streamerName = streamerName
         self.title = title
         self.thumbnailURL = thumbnailURL
         self.viewerCount = viewerCount

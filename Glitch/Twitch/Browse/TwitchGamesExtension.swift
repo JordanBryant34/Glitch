@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension TwitchGamesController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TwitchGamesController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
@@ -42,13 +42,19 @@ extension TwitchGamesController: UICollectionViewDelegate, UICollectionViewDataS
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TwitchBrowseCell
             let game = games[indexPath.item]
             
+            cell.boxArtImageView.image = nil
+            
             cell.nameLabel.text = game.name
             
             var url = game.boxArtURL
             url = url.replacingOccurrences(of: "{width}", with: "250")
             url = url.replacingOccurrences(of: "{height}", with: "375")
             
-            cell.boxArtImageView.loadImageUsingUrlString(urlString: url as NSString)
+            if let boxArtUrl = URL(string: url) {
+                ImageService.getImage(withURL: boxArtUrl) { (image) in
+                    cell.boxArtImageView.image = image
+                }
+            }
             
             return cell
         }
@@ -62,6 +68,21 @@ extension TwitchGamesController: UICollectionViewDelegate, UICollectionViewDataS
             browseStreamsController.game = game
             
             present(browseStreamsController, animated: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if indexPath.item + 1 < games.count {
+                let game = games[indexPath.item]
+                
+                var url = game.boxArtURL
+                url = url.replacingOccurrences(of: "{width}", with: "250")
+                url = url.replacingOccurrences(of: "{height}", with: "375")
+                
+                guard let boxArtUrl = URL(string: url) else { return }
+                ImageService.getImage(withURL: boxArtUrl) { (image) in }
+            }
         }
     }
 }

@@ -8,11 +8,13 @@
 
 import UIKit
 import AVKit
-import youtube_ios_player_helper
+import WebKit
 import NVActivityIndicatorView
 import GoogleMobileAds
+import Purchases
+import YoutubeDirectLinkExtractor
 
-class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
+class YoutubeVideoController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,6 +25,7 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         cv.backgroundColor = .youtubeBlack()
         cv.dataSource = self
         cv.delegate = self
+        cv.isHidden = true
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
@@ -34,17 +37,23 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         return view
     }()
     
+    let grayBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .youtubeBlack()
+        return view
+    }()
+    
     let statusBarView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
     
-    let videoPlayer: YTPlayerView = {
-        let player = YTPlayerView()
-        player.isHidden = true
-        player.translatesAutoresizingMaskIntoConstraints = false
-        return player
+    lazy var videoPlayer: AVPlayerViewController = {
+        let videoView = AVPlayerViewController()
+        videoView.view.isHidden = false
+        videoView.view.translatesAutoresizingMaskIntoConstraints = false
+        return videoView
     }()
     
     let activityIndicator: NVActivityIndicatorView = {
@@ -59,8 +68,15 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         return indicator
     }()
     
+    let initialLoadIndicator: NVActivityIndicatorView = {
+        let indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), type: .ballClipRotateMultiple, color: .youtubeRed(), padding: 0)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     lazy var infoView: VideoInfoView = {
         let view = VideoInfoView(frame: self.view.frame)
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -89,6 +105,7 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
     var nativeAdLoader: GADAdLoader!
     var nativeAd: GADUnifiedNativeAd?
     var contentCount = 0
+    var adWatched = false
     
     var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
     
@@ -120,30 +137,45 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         
         contentCount = UserDefaults.standard.integer(forKey: "contentWatchedCount")
         
+        initialLoadIndicator.startAnimating()
+        
         setupAds()
         setupViews()
         getRelatedVideos()
+        
+        setupVideo()
+        setVideoInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setupVideo()
+        
+        if adWatched == true {
+            adWatched = false
+            setupVideo()
+            present(SubscriptionViewController(), animated: true, completion: nil)
+        }
     }
     
     private func setupViews() {
         view.backgroundColor = .clear
         
+        view.addSubview(grayBackgroundView)
         view.addSubview(infoView)
         view.addSubview(statusBarView)
         view.addSubview(blackView)
         view.addSubview(collectionView)
+        view.addSubview(initialLoadIndicator)
         view.addSubview(adsAlertView)
         
         collectionView.addSubview(recommendedActivityIndicator)
         
         blackView.addSubview(activityIndicator)
-        blackView.addSubview(videoPlayer)
+        blackView.addSubview(videoPlayer.view)
+        
+        self.addChild(videoPlayer)
                 
+        grayBackgroundView.anchor(blackView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         statusBarView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: UIApplication.shared.windows[0].safeAreaInsets.top)
         adsAlertView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
@@ -157,12 +189,17 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         activityIndicator.widthAnchor.constraint(equalTo: blackView.widthAnchor, multiplier: 0.1).isActive = true
         activityIndicator.heightAnchor.constraint(equalTo: blackView.widthAnchor, multiplier: 0.1).isActive = true
         
+        initialLoadIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        initialLoadIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        initialLoadIndicator.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        initialLoadIndicator.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        
         recommendedActivityIndicator.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
         recommendedActivityIndicator.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
         recommendedActivityIndicator.widthAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.15).isActive = true
         recommendedActivityIndicator.heightAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.15).isActive = true
         
-        videoPlayer.anchor(blackView.topAnchor, left: blackView.leftAnchor, bottom: blackView.bottomAnchor, right: blackView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        videoPlayer.view.anchor(blackView.topAnchor, left: blackView.leftAnchor, bottom: blackView.bottomAnchor, right: blackView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         infoView.topAnchor.constraint(equalTo: blackView.bottomAnchor, constant: -1).isActive = true
         infoView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -1).isActive = true
@@ -184,6 +221,7 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
     
     @objc private func watchAdPressed() {
         adsAlertView.hide()
+        adWatched = true
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -201,42 +239,66 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func setupVideo() {
+    func setupVideo() {        
+        activityIndicator.startAnimating()
+        getChannelImage()
+        videoPlayer.player = nil
+        
         let currentContentCount = UserDefaults.standard.integer(forKey: "contentWatchedCount")
-                
-        if currentContentCount >= 2 {
-            adsAlertView.show()
-        } else {
-            UserDefaults.standard.set(currentContentCount + 1, forKey: "contentWatchedCount")
-            activityIndicator.startAnimating()
-            getChannelImage()
-            
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
+        
+        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+            if let error = error {
+                print("Error with purchaser info in youtube video controller: \(error.localizedDescription)")
             }
-            
-            if let video = video {
-                videoPlayer.delegate = self
-                            
-                videoPlayer.load(withVideoId: video.videoId, playerVars: playerVars)
-                videoPlayer.setPlaybackQuality(.HD720)
+
+            if currentContentCount >= 2 && purchaserInfo?.entitlements["remove-ads"]?.isActive != true {
+                self.adsAlertView.show()
+                self.videoPlayer.player?.pause()
+            } else {
+                UserDefaults.standard.set(currentContentCount + 1, forKey: "contentWatchedCount")
                 
-                infoView.titleLabel.text = video.title
-                infoView.channelNameLabel.text = video.channelTitle
-                
-                let timeSincePublished = HelperFunctions.getYoutubeTimeAgo(fromString: video.publishedAt)
-                let viewCount = HelperFunctions.formatPoints(from: video.viewCount ?? 0)
-                
-                if video.viewCount != 0 {
-                    infoView.viewAndTimeLabel.text = "\(viewCount) views • \(timeSincePublished)"
-                } else {
-                    infoView.viewAndTimeLabel.text = timeSincePublished
+                do {
+                    try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                    try AVAudioSession.sharedInstance().setActive(true)
+                } catch {
+                    print(error)
                 }
-            } else { dismiss(animated: true, completion: nil) }
+                
+                if let video = self.video {
+                    let youtubeLinkExtractor = YoutubeDirectLinkExtractor()
+                    youtubeLinkExtractor.extractInfo(for: .id(video.videoId), success: { (info) in
+                        if let link = info.lowestQualityPlayableLink {
+                            DispatchQueue.main.async {
+                                if let player = self.videoPlayer.player {
+                                    player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: link)!))
+                                } else {
+                                    self.videoPlayer.player = AVPlayer(playerItem: AVPlayerItem(url: URL(string: link)!))
+                                }
+                                self.videoPlayer.player?.play()
+                            }
+                        }
+                    }) { (error) in
+                        print("video error: \(error)")
+                    }
+                } else { self.dismiss(animated: true, completion: nil) }
+            }
         }
+    }
+    
+    func setVideoInfo() {
+        if let video = video {
+            infoView.titleLabel.text = video.title
+            infoView.channelNameLabel.text = video.channelTitle
+            
+            let timeSincePublished = HelperFunctions.getYoutubeTimeAgo(fromString: video.publishedAt)
+            let viewCount = HelperFunctions.formatPoints(from: video.viewCount ?? 0)
+            
+            if video.viewCount != 0 {
+                infoView.viewAndTimeLabel.text = "\(viewCount) views • \(timeSincePublished)"
+            } else {
+                infoView.viewAndTimeLabel.text = timeSincePublished
+            }
+        } else { dismiss(animated: true, completion: nil) }
     }
     
     func getRelatedVideos() {
@@ -247,6 +309,9 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
             YoutubeService.getRelatedVideos(withVideoId: videoId) { (videos) in
                 self.relatedVideos = videos
                 self.recommendedActivityIndicator.stopAnimating()
+                self.initialLoadIndicator.stopAnimating()
+                self.collectionView.isHidden = false
+                self.infoView.isHidden = false
                 self.reloadData()
             }
         }
@@ -281,28 +346,24 @@ class YoutubeVideoController: UIViewController, YTPlayerViewDelegate {
         }
     }
     
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        activityIndicator.stopAnimating()
-        playerView.playVideo()
-        videoPlayer.isHidden = false
-    }
-    
     @objc func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
-        let touchPoint = sender.location(in: self.view?.window)
+        if adsAlertView.isShown == false {
+            let touchPoint = sender.location(in: self.view?.window)
 
-        if sender.state == UIGestureRecognizer.State.began {
-            initialTouchPoint = touchPoint
-        } else if sender.state == UIGestureRecognizer.State.changed {
-            if touchPoint.y - initialTouchPoint.y > 0 {
-                self.view.frame = CGRect(x: 0, y: touchPoint.y - initialTouchPoint.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            }
-        } else if sender.state == UIGestureRecognizer.State.ended || sender.state == UIGestureRecognizer.State.cancelled {
-            if touchPoint.y > view.frame.height * 0.7 {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-                })
+            if sender.state == UIGestureRecognizer.State.began {
+                initialTouchPoint = touchPoint
+            } else if sender.state == UIGestureRecognizer.State.changed {
+                if touchPoint.y - initialTouchPoint.y > 0 {
+                    self.view.frame = CGRect(x: 0, y: touchPoint.y - initialTouchPoint.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                }
+            } else if sender.state == UIGestureRecognizer.State.ended || sender.state == UIGestureRecognizer.State.cancelled {
+                if touchPoint.y > view.frame.height * 0.7 {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                    })
+                }
             }
         }
     }

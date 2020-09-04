@@ -19,10 +19,15 @@ extension TwitchFollowingController: UICollectionViewDelegate, UICollectionViewD
         if let stream = streamer.stream {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: liveCellId, for: indexPath) as! TwitchStreamCell
             
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 3
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
+            
             cell.thumbnailImageView.image = nil
             cell.profilePicImageView.image = nil
             
-            cell.streamerNameLabel.text = stream.steamerName
+            cell.streamerNameLabel.text = stream.streamerName
             cell.titleLabel.text = stream.title
             
             cell.viewerCountLabel.text = "\(HelperFunctions.formatPoints(from: stream.viewerCount)) viewers"
@@ -30,7 +35,12 @@ extension TwitchFollowingController: UICollectionViewDelegate, UICollectionViewD
             var thumbnailURL = stream.thumbnailURL
             thumbnailURL = thumbnailURL.replacingOccurrences(of: "{width}", with: "1280")
             thumbnailURL = thumbnailURL.replacingOccurrences(of: "{height}", with: "720")            
-            cell.thumbnailImageView.loadImageUsingUrlString(urlString: thumbnailURL as NSString)
+            
+            if let url = URL(string: thumbnailURL) {
+                ImageService.getImage(withURL: url) { (image) in
+                    cell.thumbnailImageView.image = image
+                }
+            }
             
             var profilePicURL = streamer.profilePicURL
             profilePicURL = profilePicURL.replacingOccurrences(of: "{width}", with: "90")
@@ -40,6 +50,12 @@ extension TwitchFollowingController: UICollectionViewDelegate, UICollectionViewD
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: offlineCellId, for: indexPath) as! TwitchStreamerOfflineCell
+            
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 3
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
+            
             cell.profilePicImageView.image = nil
             cell.streamerNameLabel.text = streamer.name
             
@@ -54,12 +70,16 @@ extension TwitchFollowingController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let streamer = streamers[indexPath.item]
-        
-        if streamer.stream != nil {
-            return CGSize(width: view.frame.width, height: (view.frame.width / (16/9)) + 80)
+        if streamers.count >= indexPath.item + 1 {
+            let streamer = streamers[indexPath.item]
+            
+            if streamer.stream != nil {
+                return CGSize(width: view.frame.width - 20, height: (view.frame.width / (16/9)) + 80)
+            } else {
+                return CGSize(width: view.frame.width - 20, height: 80)
+            }
         } else {
-            return CGSize(width: view.frame.width, height: 80)
+            return CGSize(width: 0, height: 0)
         }
     }
     
@@ -69,6 +89,7 @@ extension TwitchFollowingController: UICollectionViewDelegate, UICollectionViewD
         if streamer.stream != nil {
             let streamController = TwitchStreamController()
             streamController.streamerName = streamers[indexPath.item].name
+            streamController.streamerImageUrl = streamers[indexPath.item].profilePicURL
             streamController.modalPresentationStyle = .overFullScreen
             
             present(streamController, animated: true, completion: nil)

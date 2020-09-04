@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 import NVActivityIndicatorView
 import GoogleMobileAds
+import Firebase
 
 class TwitchBrowseStreamsController: UIViewController {
     
@@ -18,11 +17,12 @@ class TwitchBrowseStreamsController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 15
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.dataSource = self
         cv.delegate = self
+        cv.prefetchDataSource = self
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.isHidden = true
         return cv
@@ -89,6 +89,7 @@ class TwitchBrowseStreamsController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             } else {
                 self.streams = streams
+                
                 self.injectAds()
                 self.reloadData()
                 self.collectionView.isHidden = false

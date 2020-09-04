@@ -105,8 +105,6 @@ class YoutubeService {
                 let json = JSON(value)
                 let items = json["items"]
                 
-                print(json)
-                
                 for item in items.array ?? [] {
                     let channelTitle = item["snippet"]["title"].stringValue
                     let channelId = item["id"]["channelId"].stringValue
@@ -300,9 +298,7 @@ class YoutubeService {
                     let channelId = item["snippet"]["channelId"].stringValue
                     let publishedAt = item["snippet"]["publishedAt"].stringValue
                     let thumbnailURL = item["snippet"]["thumbnails"]["maxres"]["url"].stringValue
-                    
-                    print("vdieo: \(item)")
-                                
+                                                    
                     let video = YoutubeVideo(title: title, videoId: id, thumbnailURL: thumbnailURL, publishedAt: publishedAt, channelTitle: channelTitle, channelId: channelId, viewCount: 0, duration: nil, channelImageURL: channelImageUrl)
                     videos.append(video)
                     
@@ -323,6 +319,47 @@ class YoutubeService {
             let profilePicURL = json["items"][0]["snippet"]["thumbnails"]["default"]["url"].stringValue
             
             completion(profilePicURL)
+        }
+    }
+    
+    static func searchYoutubeVideos(searchText text: String, completion: @escaping (_ videos: [YoutubeVideo])->()) {
+        var videos: [YoutubeVideo] = []
+        let fixedText = text.replacingOccurrences(of: " ", with: "%20")
+        let url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=\(fixedText)&regionCode=US&type=video&key=\(apiKey)"
+    
+        AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            if let value = response.value {
+                let json = JSON(value)
+                let items = json["items"]
+                
+                if let itemsArray = items.array {
+                    if itemsArray.count == 0 {
+                        completion([])
+                    }
+                    
+                    var count = 0
+                    for item in itemsArray {
+                        count += 1
+                                                
+                        let title = item["snippet"]["title"].stringValue.stringByDecodingHTMLEntities
+                        let id = item["id"]["videoId"].stringValue
+                        let channelTitle = item["snippet"]["channelTitle"].stringValue
+                        let channelId = item["snippet"]["channelId"].stringValue
+                        let publishedAt = item["snippet"]["publishedAt"].stringValue
+                        let thumbnailURL = item["snippet"]["thumbnails"]["high"]["url"].stringValue
+                           
+                        let video = YoutubeVideo(title: title, videoId: id, thumbnailURL: thumbnailURL, publishedAt: publishedAt, channelTitle: channelTitle, channelId: channelId, viewCount: 0, duration: nil, channelImageURL: nil)
+                        videos.append(video)
+                        
+                        if count == itemsArray.count {
+                            completion(videos)
+                        }
+                    }
+                }
+            } else {
+                print("no response")
+                completion(videos)
+            }
         }
     }
 }

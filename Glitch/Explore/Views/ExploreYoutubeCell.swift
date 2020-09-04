@@ -64,7 +64,7 @@ class ExploreYoutubeCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layer.cornerRadius = 10
+        layer.cornerRadius = 5
         layer.borderColor = UIColor.youtubeRed().cgColor
         layer.borderWidth = 1
         clipsToBounds = true

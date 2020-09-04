@@ -17,7 +17,7 @@ class YoutubeFollowingController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 12.5
         cv.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         cv.backgroundColor = .clear
         cv.dataSource = self

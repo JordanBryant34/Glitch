@@ -31,14 +31,21 @@ class TwitchTopStreamCell: UICollectionViewCell {
     
     let liveLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .twitchPurple()
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 3
         label.text = "LIVE"
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 15)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let labelBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .twitchPurple()
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = 3
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -46,10 +53,13 @@ class TwitchTopStreamCell: UICollectionViewCell {
         
         layer.masksToBounds = true
         layer.cornerRadius = 5
-        backgroundColor = .twitchGray()
+        layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
+        layer.borderWidth = 1
+        backgroundColor = .twitchLightGray()
         
         addSubview(profilePicImageView)
         addSubview(nameLabel)
+        addSubview(labelBackgroundView)
         addSubview(liveLabel)
         
         profilePicImageView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
@@ -62,11 +72,13 @@ class TwitchTopStreamCell: UICollectionViewCell {
         nameLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        liveLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        liveLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7.5).isActive = true
-        liveLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        liveLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        labelBackgroundView.centerXAnchor.constraint(equalTo: liveLabel.centerXAnchor).isActive = true
+        labelBackgroundView.centerYAnchor.constraint(equalTo: liveLabel.centerYAnchor, constant: 1).isActive = true
+        labelBackgroundView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        labelBackgroundView.widthAnchor.constraint(equalTo: liveLabel.widthAnchor, constant: 15).isActive = true
         
+        liveLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        liveLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
     }
     
     required init?(coder: NSCoder) {

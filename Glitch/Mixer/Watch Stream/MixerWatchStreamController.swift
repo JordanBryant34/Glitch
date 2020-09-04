@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import AVKit
 import GoogleMobileAds
+import Purchases
 
 class MixerWatchStreamController: UIViewController {
     
@@ -85,6 +86,7 @@ class MixerWatchStreamController: UIViewController {
     var stream: MixerStream?
     var contentCount: Int = 0
     var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
+    var adWatched = false
     
     let avController = AVPlayerViewController()
     
@@ -112,9 +114,22 @@ class MixerWatchStreamController: UIViewController {
         super.viewDidAppear(true)
         
         if (contentCount >= 2) && (UserDefaults.standard.integer(forKey: "contentWatchedCount") >= 2) {
-            avController.player?.pause()
-            adsAlertView.show()
+            Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                if let error = error {
+                    print("Error with purchaser info in mixer stream controller: \(error.localizedDescription)")
+                }
+                
+                if purchaserInfo?.entitlements["remove-ads"]?.isActive != true {
+                    self.avController.player?.pause()
+                    self.adsAlertView.show()
+                }
+            }
+            
         } else {
+            if adWatched == true {
+                adWatched = false
+                present(SubscriptionViewController(), animated: true, completion: nil)
+            }
             avController.player?.play()
         }
     }
@@ -189,6 +204,7 @@ class MixerWatchStreamController: UIViewController {
     
     @objc private func watchAdPressed() {
         adsAlertView.hide()
+        adWatched = true
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         

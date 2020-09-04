@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import OAuthSwift
+import Firebase
 
 class TwitchService {
     static let clientId = "pmov7ap2zve53d1amuv97v07ik930y"
@@ -30,12 +31,18 @@ class TwitchService {
         
         oauthSwift.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauthSwift)
         
-        oauthSwift.authorize(withCallbackURL: "player3Glitch://twitch", scope: "analytics:read:games", state: "TWITCH") { (result) in
+        oauthSwift.authorize(withCallbackURL: "player3Glitch://twitch", scope: "user:edit:follows", state: "TWITCH") { (result) in
             switch result {
             case .success(let (credential, response, parameters)):
                 print(response ?? "no response")
                 print(parameters)
                 UserDefaults.standard.set(credential.oauthToken, forKey: "twitchAccessToken")
+                
+                if let id = UserDefaults.standard.string(forKey: "userId") {
+                    let ref = Database.database().reference().child("users").child(id).child("accounts")
+                    ref.updateChildValues(["twitch" : "linked"])
+                }
+                
                 validateToken { (status) in
                     print(status)
                     completion(.validAccessToken)
@@ -71,6 +78,37 @@ class TwitchService {
                 } else {
                     completion(.validAccessToken)
                 }
+            }
+        }
+    }
+    
+    static func handleFollowAndUnfollow(streamer: String, httpMethod: HTTPMethod, completion: @escaping(_ success: Bool?)->()) {
+        guard let fromUserId = UserDefaults.standard.string(forKey: "twitchUserId") else { completion(false); return }
+        guard let accessToken = UserDefaults.standard.string(forKey: "twitchAccessToken") else { completion(false); return }
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : "Bearer \(accessToken)",
+            "Client-ID": clientId,
+            "Accept": "application/json"
+        ]
+        
+        getStreamerId(streamerName: streamer) { (id) in
+            if let streamerId = id {
+                let url = "https://api.twitch.tv/helix/users/follows"
+                let parameters: Parameters = [
+                    "from_id" : fromUserId,
+                    "to_id" : streamerId
+                ]
+                
+                AF.request(url, method: httpMethod, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+                    if response.response?.statusCode == 204 {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                }
+            } else {
+                completion(false)
             }
         }
     }
@@ -124,6 +162,60 @@ class TwitchService {
                     }
                 }
             } else { completion([]) }
+        }
+    }
+    
+    static func getStreamerPicture(streamerName: String, completion: @escaping (_ profilePicUrl: String?)->()) {
+        guard let accessToken = UserDefaults.standard.string(forKey: "twitchAccessToken") else { completion(nil); return }
+        
+        let url = "https://api.twitch.tv/helix/users?login=\(streamerName.lowercased())"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : "Bearer \(accessToken)",
+            "Client-ID": clientId,
+            "Accept": "application/json"
+        ]
+        
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+            guard let value = response.value else { completion(nil); return }
+            let json = JSON(value)
+            let items = json["data"]
+            
+            if let itemsArray = items.array {
+                let streamerData = itemsArray[0]
+                let profilePicURL = streamerData["profile_image_url"].stringValue
+                
+                completion(profilePicURL)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    static func getStreamerId(streamerName: String, completion: @escaping (_ id: String?)->()) {
+        guard let accessToken = UserDefaults.standard.string(forKey: "twitchAccessToken") else { completion(nil); return }
+        
+        let url = "https://api.twitch.tv/helix/users?login=\(streamerName.lowercased())"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : "Bearer \(accessToken)",
+            "Client-ID": clientId,
+            "Accept": "application/json"
+        ]
+        
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+            guard let value = response.value else { completion(nil); return }
+            let json = JSON(value)
+            let items = json["data"]
+            
+            if let itemsArray = items.array {
+                let streamerData = itemsArray[0]
+                let id = streamerData["id"].stringValue
+                
+                completion(id)
+            } else {
+                completion(nil)
+            }
         }
     }
     

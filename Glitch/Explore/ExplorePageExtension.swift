@@ -29,6 +29,18 @@ extension ExplorePageController: UICollectionViewDelegate, UICollectionViewDataS
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: youtubeCellId, for: indexPath) as! ExploreYoutubeCell
                 cell.video = video
                 return cell
+            } else if let esportsMatch = exploreItems[indexPath.item] as? EsportsMatch {
+                if esportsMatch.status == "running" {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: esportsLiveCellId, for: indexPath) as! ExploreLiveEsportsCell
+                    cell.match = esportsMatch
+                    cell.rootViewController = self
+                    return cell
+                } else {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: esportsCellId, for: indexPath) as! ExploreEsportsCell
+                    cell.match = esportsMatch
+                    return cell
+                }
+                
             } else {
                 return collectionView.dequeueReusableCell(withReuseIdentifier: noCellId, for: indexPath)
             }
@@ -43,6 +55,12 @@ extension ExplorePageController: UICollectionViewDelegate, UICollectionViewDataS
                 return CGSize(width: view.frame.width - 20, height: 80)
             } else if exploreItems[indexPath.item] is YoutubeVideo || exploreItems[indexPath.item] is TwitchStream {
                 return CGSize(width: (view.frame.width - 20), height: ((view.frame.width - 20) / (16/9)) + 80)
+            } else if let match = exploreItems[indexPath.item] as? EsportsMatch {
+                if match.status == "running" && match.liveStreamUrl.contains("https://www.twitch.tv/") {
+                    return CGSize(width: view.frame.width - 20, height: 205)
+                } else {
+                    return CGSize(width: view.frame.width - 20, height: 175)
+                }
             } else {
                 return CGSize(width: 0, height: 0)
             }
@@ -68,7 +86,8 @@ extension ExplorePageController: UICollectionViewDelegate, UICollectionViewDataS
             present(mixerStreamController, animated: true, completion: nil)
         } else if let stream = exploreItems[indexPath.item] as? TwitchStream {
             let twitchStreamController = TwitchStreamController()
-            twitchStreamController.streamerName = stream.steamerName
+            twitchStreamController.streamerName = stream.streamerName
+            twitchStreamController.streamerImageUrl = stream.streamerPicURL
             twitchStreamController.modalPresentationStyle = .overFullScreen
             present(twitchStreamController, animated: true, completion: nil)
         } else if let video = exploreItems[indexPath.item] as? YoutubeVideo {

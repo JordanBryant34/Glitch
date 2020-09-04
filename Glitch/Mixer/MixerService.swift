@@ -25,7 +25,7 @@ class MixerService {
     static func signIn(withViewController viewController: UIViewController, completion: @escaping (_ signedIn: Bool)->()) {
         oauthSwift.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauthSwift)
         
-        oauthSwift.authorize(withCallbackURL: "player3Glitch://mixer.player3studios.glitch.com", scope: "channel:details:self", state: "MIXER") { (result) in
+        oauthSwift.authorize(withCallbackURL: "player3Glitch://glitch.mixer", scope: "channel:details:self", state: "MIXER") { (result) in
             switch result {
             case .success(let (credential, response, parameters)):
                 print(response ?? "no response")

@@ -62,7 +62,7 @@ extension UIColor {
     }
     
     class func twitchLightGray() -> UIColor {
-        return UIColor(r: 31, g: 31, b: 35)
+        return UIColor(r: 33, g: 33, b: 38)
     }
     
     class func twitchGrayTextColor() -> UIColor {
@@ -84,5 +84,10 @@ extension UIColor {
     
     class func mixerGrayTextColor() -> UIColor {
         return UIColor(r: 197, g: 201, b: 197)
+    }
+    
+    //Esports Colors
+    class func esportsBlue() -> UIColor {
+        return UIColor(r: 106, g: 185, b: 231)
     }
 }

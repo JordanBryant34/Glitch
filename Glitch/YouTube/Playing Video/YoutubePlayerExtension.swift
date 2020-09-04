@@ -70,6 +70,7 @@ extension YoutubeVideoController: UICollectionViewDelegate, UICollectionViewData
         video = relatedVideos[indexPath.item]
         
         setupVideo()
+        setVideoInfo()
         getRelatedVideos()
     }
 }

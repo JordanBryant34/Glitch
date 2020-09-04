@@ -160,5 +160,49 @@ class HelperFunctions {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
+    
+    static func storePngToFile(image: UIImage, pathComponent: String, size: CGSize) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let imageToStore = HelperFunctions.resizeImage(image: image, newSize: size)
+        
+        if let data = imageToStore.pngData() {
+            let fileName = documentsDirectory.appendingPathComponent(pathComponent)
+            try? data.write(to: fileName)
+        }
+    }
+    
+    static func getImageFromFile(pathComponent: String) -> UIImage? {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        let imageUrl = documentsDirectory.appendingPathComponent(pathComponent)
+        if FileManager.default.fileExists(atPath: imageUrl.path) {
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+        } else {
+            return nil
+        }
+    }
+    
+    static func resizeImage(image: UIImage, newSize: CGSize) -> (UIImage) {
+        let newRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height).integral
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return image }
+
+        // Set the quality level to use when rescaling
+        context.interpolationQuality = CGInterpolationQuality.high
+        let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: newSize.height)
+
+        context.concatenate(flipVertical)
+        // Draw into the context; this scales the image
+        context.draw(image.cgImage!, in: CGRect(x: 0.0,y: 0.0, width: newRect.width, height: newRect.height))
+
+        guard let newImageRef = context.makeImage() else { return image }
+        let newImage = UIImage(cgImage: newImageRef)
+
+        // Get the resized image from the context and a UIImage
+        UIGraphicsEndImageContext()
+
+        return newImage
+    }
 }
 

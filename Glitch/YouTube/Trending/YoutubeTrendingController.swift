@@ -12,13 +12,13 @@ import SwiftyJSON
 import NVActivityIndicatorView
 import Firebase
 
-class YoutubeTrendingController: UIViewController {
+class YoutubeTrendingController: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 50, left: 0, bottom: 20, right: 0)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 12.5, left: 0, bottom: 20, right: 0)
+        layout.minimumInteritemSpacing = 12.5
+        layout.minimumLineSpacing = 12.5
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.dataSource = self
@@ -33,9 +33,23 @@ class YoutubeTrendingController: UIViewController {
         return indicator
     }()
     
+    let noResultsView: BackgroundView = {
+        let view = BackgroundView()
+        view.imageView.image = UIImage(named: "youtubeBackground")
+        view.label.text = "No results"
+        view.subLabel.text = "Search for different keywords and try again."
+        view.subLabel.textColor = .youtubeLightGray()
+        view.button.isHidden = true
+        view.isHidden = true
+        return view
+    }()
+    
     let cellId = "cellId"
+    let headerId = "headerId"
     let adCellId = "adCellId"
     let apiKey = "AIzaSyAPDm4p1q4j1gyNa6ENxfKGICPvW1d7wnw"
+    
+    var keyboardIsVisible = false
     
     var videos: [Any] = []
     
@@ -45,6 +59,7 @@ class YoutubeTrendingController: UIViewController {
         super.viewDidLoad()
         
         collectionView.register(YoutubeVideoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(YoutubeTrendingHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView.register(LargeNativeAdCollectionViewCell.self, forCellWithReuseIdentifier: adCellId)
         
         setupViews()
@@ -54,10 +69,12 @@ class YoutubeTrendingController: UIViewController {
     func setupViews() {
         view.backgroundColor = .clear
         
+        view.addSubview(noResultsView)
         view.addSubview(collectionView)
         view.addSubview(activityIndicator)
         
-        collectionView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        collectionView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 50, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        noResultsView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 70, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -111,6 +128,54 @@ class YoutubeTrendingController: UIViewController {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.collectionView.reloadData()
+            if self.videos.count == 0 {
+                self.noResultsView.isHidden = false
+            } else {
+                self.noResultsView.isHidden = true
+            }
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+        if let text = searchBar.text {
+            activityIndicator.startAnimating()
+            YoutubeService.searchYoutubeVideos(searchText: text) { (videos) in
+                if videos.count == 0 {
+                    self.videos = []
+                    self.reloadData()
+                }
+                
+                var count = 0
+                for video in videos {
+                    count += 1
+                    YoutubeService.getChannelImage(withChannelId: video.channelId) { (imageUrl) in
+                        video.channelImageURL = imageUrl
+                    
+                        if count == videos.count {
+                            self.videos = videos
+                            self.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        keyboardIsVisible = true
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        keyboardIsVisible = false
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != self.collectionView {
+            return false
+        }else{
+            return true
         }
     }
 }

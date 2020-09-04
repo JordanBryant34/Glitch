@@ -14,9 +14,9 @@ class TwitchFollowingController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 15
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.dataSource = self
@@ -88,6 +88,8 @@ class TwitchFollowingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .twitchGray()
                 
         collectionView.register(TwitchStreamerOfflineCell.self, forCellWithReuseIdentifier: offlineCellId)
         collectionView.register(TwitchStreamCell.self, forCellWithReuseIdentifier: liveCellId)

@@ -10,7 +10,7 @@ import UIKit
 
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    var subViewControllers = [ExplorePageController(), TwitterViewController(), YoutubeViewController(), MixerViewControler(), TwitchViewController(),  SettingsViewController()]
+    var subViewControllers = [ExplorePageController(), TwitchViewController(), YoutubeViewController(), TwitterViewController(), EsportsViewController(),  SettingsViewController()]
         
     override func viewDidLoad() {
         super.viewDidLoad()

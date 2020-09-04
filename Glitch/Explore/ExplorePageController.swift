@@ -10,14 +10,15 @@ import UIKit
 import Firebase
 import NVActivityIndicatorView
 import CRRefresh
+import SwiftyJSON
 
 class ExplorePageController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 15
+        layout.minimumLineSpacing = 15
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.dataSource = self
@@ -37,6 +38,8 @@ class ExplorePageController: UIViewController {
     let youtubeCellId = "youtubeCellId"
     let twitchCellId = "twitchCellId"
     let mixerCellId = "mixerCellId"
+    let esportsLiveCellId = "esportsLiveCellId"
+    let esportsCellId = "esportsCellId"
     let headerId = "headerId"
     let noCellId = "noCellId"
         
@@ -48,6 +51,7 @@ class ExplorePageController: UIViewController {
     }
     
     private func setupViews() {
+        
         let animator = CustomAnimator()
         animator.label.textColor = .white
         animator.activityIndicator.color = .white
@@ -59,6 +63,8 @@ class ExplorePageController: UIViewController {
         collectionView.register(ExploreYoutubeCell.self, forCellWithReuseIdentifier: youtubeCellId)
         collectionView.register(ExploreTwitchCell.self, forCellWithReuseIdentifier: twitchCellId)
         collectionView.register(ExploreMixerCell.self, forCellWithReuseIdentifier: mixerCellId)
+        collectionView.register(ExploreLiveEsportsCell.self, forCellWithReuseIdentifier: esportsLiveCellId)
+        collectionView.register(ExploreEsportsCell.self, forCellWithReuseIdentifier: esportsCellId)
         collectionView.register(ExploreHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: noCellId)
                 
@@ -79,13 +85,10 @@ class ExplorePageController: UIViewController {
         activityIndicator.startAnimating()
         
         let exploreRef = Database.database().reference().child("explore")
+        let esportsRef = Database.database().reference().child("esports").child("matches")
                  
         exploreRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let exploreData = snapshot.value as? NSDictionary else { return }
-            
-            if let mixerData = exploreData["mixer"] as? NSDictionary {
-                self.setMixerStreamers(data: mixerData)
-            }
             
             if let twitchData = exploreData["twitch"] as? NSDictionary {
                 self.setTwitchStreamers(data: twitchData)
@@ -95,28 +98,19 @@ class ExplorePageController: UIViewController {
                 self.setYoutubeVideos(data: youtubeData)
             }
         })
-    }
-    
-    private func setMixerStreamers(data: NSDictionary) {
-        guard let streamerNames = data.allKeys as? [String] else { return }
         
-        var count = 0
-        for streamerName in streamerNames {
-            count += 1
-            guard let streamer = data[streamerName] as? NSDictionary else { return }
-            guard let game = streamer["game"] as? String else { return }
-            guard let id = streamer["id"] as? Int else { return }
-            guard let username = streamer["username"] as? String else { return }
-            guard let profilePicUrl = streamer["profilePicUrl"] as? String else { return }
-                
-            let channel = MixerChannel(id: "\(id)", username: username, profilePicUrl: profilePicUrl, isOnline: 1, game: game)
-            exploreItems.append(channel)
+        esportsRef.observeSingleEvent(of: .value) { (snapshot) in
+            guard let esportsData = snapshot.value as? NSDictionary else { return }
             
-            if count == streamerNames.count {
-                print("Mixer Streamers Added")
-                reloadExploreItems()
+            if let liveData = esportsData["live"] as? String {
+                let liveJson = JSON(parseJSON: liveData)
+                self.setEsportsData(json: liveJson, limit: nil)
             }
             
+            if let pastData = esportsData["past"] as? String {
+                let pastData = JSON(parseJSON: pastData)
+                self.setEsportsData(json: pastData, limit: 10)
+            }
         }
     }
     
@@ -137,7 +131,6 @@ class ExplorePageController: UIViewController {
             exploreItems.append(twitchStream)
             
             if count == streamerNames.count {
-                print("Twitch Streamers Added")
                 reloadExploreItems()
             }
         }
@@ -164,8 +157,21 @@ class ExplorePageController: UIViewController {
             exploreItems.append(youtubeVideo)
             
             if count == videoIds.count {
-                print("Youtube Videos Added")
                 reloadExploreItems()
+            }
+        }
+    }
+    
+    private func setEsportsData(json: JSON, limit: Int?) {
+        EsportsService.parseMatchesJson(json: json) { (matches) in
+            var matchesToSet: [EsportsMatch] = matches
+            
+            if let limit = limit {
+                matchesToSet = Array(matches.prefix(limit))
+            }
+            if matches.count > 0 {
+                self.exploreItems.append(contentsOf: matchesToSet)
+                self.reloadExploreItems()
             }
         }
     }

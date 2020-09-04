@@ -21,6 +21,7 @@ class TwitchGamesController: UIViewController {
         cv.backgroundColor = .clear
         cv.dataSource = self
         cv.delegate = self
+        cv.prefetchDataSource = self
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.isHidden = true
         return cv
@@ -64,9 +65,14 @@ class TwitchGamesController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if let _ = UserDefaults.standard.string(forKey: "twitchUserId"), let _ = UserDefaults.standard.string(forKey: "twitchAccessToken") {
+            collectionView.isHidden = false
+            backgroundView.isHidden = true
             if games.count == 0 {
                 getTopGames()
             }
+        } else {
+            collectionView.isHidden = true
+            backgroundView.isHidden = false
         }
     }
     
@@ -115,6 +121,7 @@ class TwitchGamesController: UIViewController {
     
     @objc func presentStreamController() {
         let streamController = TwitchStreamController()
+        streamController.modalPresentationStyle = .overFullScreen
         present(streamController, animated: true, completion: nil)
     }
     

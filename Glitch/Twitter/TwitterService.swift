@@ -9,6 +9,7 @@
 import Foundation
 import OAuthSwift
 import SwiftyJSON
+import Firebase
 
 class TwitterService {
     
@@ -33,6 +34,12 @@ class TwitterService {
                 print(response ?? "")
                 UserDefaults.standard.set(credential.oauthToken, forKey: "twitterAccessToken")
                 UserDefaults.standard.set(credential.oauthTokenSecret, forKey: "twitterTokenSecret")
+                
+                if let id = UserDefaults.standard.string(forKey: "userId") {
+                    let ref = Database.database().reference().child("users").child(id).child("accounts")
+                    ref.updateChildValues(["twitter" : "linked"])
+                }
+                
                 completion(true)
             case .failure(let error):
                 print(error.localizedDescription)

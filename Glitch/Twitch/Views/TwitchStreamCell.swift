@@ -10,8 +10,8 @@ import UIKit
 
 class TwitchStreamCell: UICollectionViewCell {
     
-    let thumbnailImageView: AsyncImageView = {
-        let imageView = AsyncImageView()
+    let thumbnailImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.backgroundColor = .twitchGray()
         return imageView
     }()
@@ -51,12 +51,10 @@ class TwitchStreamCell: UICollectionViewCell {
     
     let liveLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .youtubeRed()
         label.text = "LIVE"
-        label.font = label.font.withSize(17.5)
         label.textAlignment = .center
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 5
+        label.font = .systemFont(ofSize: 17.5)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -80,12 +78,22 @@ class TwitchStreamCell: UICollectionViewCell {
         return view
     }()
     
+    let labelBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .twitchPurple()
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = 3
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(thumbnailImageView)
         addSubview(bottomView)
         
+        thumbnailImageView.addSubview(labelBackgroundView)
         thumbnailImageView.addSubview(liveLabel)
         thumbnailImageView.addSubview(viewerCountView)
         thumbnailImageView.addSubview(viewerCountLabel)
@@ -97,10 +105,13 @@ class TwitchStreamCell: UICollectionViewCell {
         bottomView.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 80)
         thumbnailImageView.anchor(topAnchor, left: leftAnchor, bottom: bottomView.topAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
-        liveLabel.leftAnchor.constraint(equalTo: thumbnailImageView.leftAnchor, constant: 10).isActive = true
+        labelBackgroundView.centerXAnchor.constraint(equalTo: liveLabel.centerXAnchor).isActive = true
+        labelBackgroundView.centerYAnchor.constraint(equalTo: liveLabel.centerYAnchor, constant: 1).isActive = true
+        labelBackgroundView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        labelBackgroundView.widthAnchor.constraint(equalTo: liveLabel.widthAnchor, constant: 15).isActive = true
+        
+        liveLabel.leftAnchor.constraint(equalTo: thumbnailImageView.leftAnchor, constant: 17.5).isActive = true
         liveLabel.topAnchor.constraint(equalTo: thumbnailImageView.topAnchor, constant: 10).isActive = true
-        liveLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        liveLabel.widthAnchor.constraint(equalToConstant: 45).isActive = true
         
         viewerCountLabel.bottomAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: -10).isActive = true
         viewerCountLabel.leftAnchor.constraint(equalTo: thumbnailImageView.leftAnchor, constant: 20).isActive = true
@@ -116,9 +127,9 @@ class TwitchStreamCell: UICollectionViewCell {
         profilePicImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         streamerNameLabel.leftAnchor.constraint(equalTo: profilePicImageView.rightAnchor, constant: 10).isActive = true
-        streamerNameLabel.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 10).isActive = true
+        streamerNameLabel.bottomAnchor.constraint(equalTo: profilePicImageView.centerYAnchor, constant: -3).isActive = true
         
-        titleLabel.topAnchor.constraint(equalTo: streamerNameLabel.bottomAnchor, constant: 5).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: profilePicImageView.centerYAnchor, constant: 3).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: profilePicImageView.rightAnchor, constant: 10).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: bottomView.rightAnchor, constant: -10).isActive = true

@@ -11,9 +11,11 @@ import OAuthSwift
 import AppAuth
 import Firebase
 import GoogleMobileAds
+import Purchases
+import Flurry_iOS_SDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderDelegate, GADRewardBasedVideoAdDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderDelegate, GADRewardBasedVideoAdDelegate, PurchasesDelegate {
     
     var window: UIWindow?
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
@@ -25,22 +27,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
     var nativeAds: [GADUnifiedNativeAd] = []
     var adLoadAttempts = 0
     var rewardAdInstance = GADRewardBasedVideoAd.sharedInstance()
+    
+    //Test ID's for Google Admob
+    let rewardAdId = "ca-app-pub-3940256099942544/5224354917"
+    let nativeAdId = "ca-app-pub-3940256099942544/2247696110"
+    
+    //Actual ID's for Google Admob
+//    let rewardAdId = "ca-app-pub-7879710565936793/2226085464"
+//    let nativeAdId = "ca-app-pub-7879710565936793/9913003799"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
+        Purchases.debugLogsEnabled = true
+        Purchases.shared.delegate = self
+        Purchases.configure(withAPIKey: "uYHOofWgPecKHrieUvAToTvMPrBFrPQT")
+        
+        Flurry.startSession("Q6TBFFNH6MM2F6498BWK", with: FlurrySessionBuilder
+            .init()
+            .withCrashReporting(true)
+            .withLogLevel(FlurryLogLevelAll))
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .dark
-
         
         window?.rootViewController = rootViewController
         
-        getNativeAds()
         getRewardAds()
-        
+        getNativeAds()
         checkId()
                 
         return true
@@ -48,34 +65,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
     
     private func getRewardAds() {
         rewardAdInstance.delegate = self
-        rewardAdInstance.load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardAdInstance.load(GADRequest(), withAdUnitID: rewardAdId)
     }
     
     private func getNativeAds() {
-        let adUnitID = "ca-app-pub-3940256099942544/3986624511"
-        
         let options = GADMultipleAdsAdLoaderOptions()
         options.numberOfAds = 5
                 
-        adLoader = GADAdLoader(adUnitID: adUnitID,
+        adLoader = GADAdLoader(adUnitID: nativeAdId,
                                rootViewController: rootViewController,
                                adTypes: [.unifiedNative],
                                options: [options])
         
         adLoader.delegate = self
-        
-        adLoader.load(GADRequest())
     }
     
     private func checkId() {
         if let id = UserDefaults.standard.string(forKey: "userId") {
             let db = Database.database().reference().child("users").child(id).child("lastSeen")
             db.setValue(Date().timeIntervalSince1970)
+            
+            Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                if let error = error {
+                    print("Error with purchaser info in app delegate: \(error.localizedDescription)")
+                }
+            }
         } else {
             let newId = HelperFunctions.getRandomAlphanumericString(length: 25)
             let db = Database.database().reference().child("users").child(newId).child("lastSeen")
             UserDefaults.standard.set(newId, forKey: "userId")
             db.setValue(Date().timeIntervalSince1970)
+            
+            let onboardingController = OnboardingPageViewController()
+            onboardingController.modalPresentationStyle = .overFullScreen
+            rootViewController.present(onboardingController, animated: true, completion: nil)
         }
     }
     
@@ -90,8 +113,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
     }
     
     func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
-        if nativeAds.count < 25 && adLoadAttempts <= 6 {
-            adLoader.load(GADRequest())
+        if nativeAds.count < 25 && adLoadAttempts <= 7 {
+            Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                if let error = error {
+                    print("Error with purchaser info in app delegate ad loader: \(error.localizedDescription)")
+                }
+                
+                if purchaserInfo?.entitlements["remove-ads"]?.isActive == false {
+                    adLoader.load(GADRequest())
+                }
+            }
         }
         
         adLoadAttempts += 1
@@ -100,13 +131,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         UserDefaults.standard.set(0, forKey: "contentWatchedCount")
         rewardAdInstance = GADRewardBasedVideoAd.sharedInstance()
-        rewardAdInstance.load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardAdInstance.load(GADRequest(), withAdUnitID: rewardAdId)
     }
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
         UserDefaults.standard.set(0, forKey: "contentWatchedCount")
         rewardAdInstance = GADRewardBasedVideoAd.sharedInstance()
-        rewardAdInstance.load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardAdInstance.load(GADRequest(), withAdUnitID: rewardAdId)
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -116,30 +147,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        // Sends the URL to the current authorization flow (if any) which will
-        // process it if it relates to an authorization response.
         if let authorizationFlow = self.currentAuthorizationFlow, authorizationFlow.resumeExternalUserAgentFlow(with: url) {
             self.currentAuthorizationFlow = nil
             return true
         }
         
-        if (url.host == "mixer.player3studios.glitch.com") {
+        if url.scheme == "player3Glitch" || url.scheme == "player3glitch" {
             OAuthSwift.handle(url: url)
         }
 
-        if url.scheme == "player3Glitch" {
-            OAuthSwift.handle(url: url)
-        }
-        
-        if url.host == "twitter" {
-            OAuthSwift.handle(url: url)
-        }
-        
-        if url.host == "twitch" {
-            OAuthSwift.handle(url: url)
-        }
-    
-        // Your additional URL handling (if any)
         urlToHandle = url
 
         return false

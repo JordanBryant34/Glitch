@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -26,36 +26,6 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>player3Glitch</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.player3.glitch.app</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>player3Glitch://mixer.player3studios.glitch.com</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.player3.glitch.app</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>player3Glitch://twitter</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.player3.glitch.app</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>player3Glitch://twitch</string>
 			</array>
 		</dict>
 	</array>

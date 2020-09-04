@@ -53,6 +53,7 @@ PODS:
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
+  - Flurry-iOS-SDK/FlurrySDK (10.3.3)
   - Google-Mobile-Ads-SDK (7.55.1):
     - GoogleAppMeasurement (~> 6.0)
   - GoogleAppMeasurement (6.3.0):
@@ -95,8 +96,9 @@ PODS:
   - NVActivityIndicatorView/Presenter (4.8.0)
   - OAuthSwift (2.1.0)
   - PromisesObjC (1.2.8)
+  - Purchases (3.2.2)
   - SwiftyJSON (5.0.0)
-  - youtube-ios-player-helper (0.1.6)
+  - YoutubeDirectLinkExtractor (0.3.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -106,11 +108,13 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Functions
+  - Flurry-iOS-SDK/FlurrySDK
   - Google-Mobile-Ads-SDK
   - NVActivityIndicatorView
   - OAuthSwift
+  - Purchases (= 3.2.2)
   - SwiftyJSON
-  - youtube-ios-player-helper
+  - YoutubeDirectLinkExtractor
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -138,8 +142,11 @@ SPEC REPOS:
     - NVActivityIndicatorView
     - OAuthSwift
     - PromisesObjC
+    - Purchases
     - SwiftyJSON
-    - youtube-ios-player-helper
+  trunk:
+    - Flurry-iOS-SDK
+    - YoutubeDirectLinkExtractor
 
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
@@ -155,6 +162,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
   FirebaseFunctions: 5af7c35d1c5e41608fecbb667eb6c4e672e318d0
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  Flurry-iOS-SDK: 74038865f22ab9f587877b6a01b79e1b3bd86e01
   Google-Mobile-Ads-SDK: f206aff290f26fde422495c6cd187e50efbed57e
   GoogleAppMeasurement: 39ecba10918b21c83877d392246157f65db351cf
   GoogleDataTransport: 653963cf5be60fb59cf051e070f0836fdc305f81
@@ -166,9 +174,10 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   OAuthSwift: ab1675598273e04355e0282459c328e65c9ddacd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Purchases: 392c729893c011c7d4d37d7f7c9f863e597d4a9b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+  YoutubeDirectLinkExtractor: de7abd36c0e3bb120b9b372f36450fbf9b51c01e
 
-PODFILE CHECKSUM: 5be2300174f57b62a7eaf5fd609897092aa49a9a
+PODFILE CHECKSUM: 50fe6d15872304dc2c2e2b6741ab68adb4586e38
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.9.3

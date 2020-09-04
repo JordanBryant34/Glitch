@@ -37,6 +37,10 @@ class ContainerViewController: UIPageViewController {
         setupViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
     func setupViews() {
         view.backgroundColor = .twitchGray()
         

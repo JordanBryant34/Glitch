@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SafariServices
+import AVFoundation
 
 extension MixerStreamsController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     

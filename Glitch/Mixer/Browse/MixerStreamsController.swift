@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MixerStreamsController: UIViewController {
+class MixerStreamsController: UIViewController, ACThumbnailGeneratorDelegate {
+    func generator(_ generator: ACThumbnailGenerator, didCapture image: UIImage, at position: Double) {
+        print("got thumbnail")
+    }
+    
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,6 +32,8 @@ class MixerStreamsController: UIViewController {
     
     var game: MixerGame?
     var streams: [MixerStream] = []
+    
+    var generator: ACThumbnailGenerator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +61,19 @@ class MixerStreamsController: UIViewController {
         let parameters = [
             "limit" : 99,
             "order" : "viewersCurrent:DESC"
-            ] as [String : Any]
+        ] as [String : Any]
         
         MixerService.getStreams(url: url, parameters: parameters) { (streams) in
             self.streams = streams
+            
+            for stream in streams {
+                let index = streams.firstIndex{$0 === stream}
+                let url = URL(string: "https://mixer.com/api/v1/channels/\(stream.channelId)/manifest.m3u8")!
+                self.generator = ACThumbnailGenerator(streamUrl: url)
+                self.generator.delegate = self
+                print("Index: \(index)")
+                self.generator.captureImage(at: Double(index ?? 0))
+            }
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

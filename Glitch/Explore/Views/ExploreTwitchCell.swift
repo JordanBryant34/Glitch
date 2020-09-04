@@ -93,7 +93,7 @@ class ExploreTwitchCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layer.cornerRadius = 10
+        layer.cornerRadius = 5
         layer.borderColor = UIColor.twitchPurple().cgColor
         layer.borderWidth = 1
         clipsToBounds = true
@@ -143,7 +143,7 @@ class ExploreTwitchCell: UICollectionViewCell {
         thumbnailImageView.image = nil
         profilePicImageView.image = nil
         
-        streamerNameLabel.text = stream.steamerName
+        streamerNameLabel.text = stream.streamerName
         titleLabel.text = stream.title
         
         viewerCountLabel.text = "\(HelperFunctions.formatPoints(from: stream.viewerCount)) viewers"

@@ -18,6 +18,12 @@ extension YoutubeFollowingController: UICollectionViewDelegateFlowLayout, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! YoutubeVideoCell
         
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 3
+        cell.layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
+        cell.layer.borderWidth = 1
+        cell.bottomView.backgroundColor = .youtubeDarkGray()
+        
         let video = videos[indexPath.item]
                 
         let timeSincePublished = HelperFunctions.getYoutubeTimeAgo(fromString: video.publishedAt)
@@ -42,7 +48,7 @@ extension YoutubeFollowingController: UICollectionViewDelegateFlowLayout, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: (view.frame.width / (16/9)) + 80)
+        return CGSize(width: view.frame.width - 20, height: (view.frame.width / (16/9)) + 80)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -50,7 +56,7 @@ extension YoutubeFollowingController: UICollectionViewDelegateFlowLayout, UIColl
         if let _ = selectedChannel {
             return CGSize(width: view.frame.width, height: 160)
         } else {
-            return CGSize(width: view.frame.width, height: 110)
+            return CGSize(width: view.frame.width, height: 122.5)
         }
     }
     

@@ -18,19 +18,38 @@ extension YoutubeTrendingController: UICollectionViewDelegate, UICollectionViewD
         if let video = videos[indexPath.item] as? YoutubeVideo {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! YoutubeVideoCell
             
+            cell.thumbnailImageView.image = nil
+            cell.channelImageView.image = nil
+            
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 3
+            cell.layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
+            cell.layer.borderWidth = 1
+            cell.bottomView.backgroundColor = .youtubeDarkGray()
+            
             let viewCount = HelperFunctions.formatPoints(from: video.viewCount ?? 0)
             
             let timeSincePublished = HelperFunctions.getYoutubeTimeAgo(fromString: video.publishedAt)
                     
             cell.titleLabel.text = video.title
-            cell.detailsLabel.text = "\(video.channelTitle) • \(viewCount) views • \(timeSincePublished)"
             
-            if video.thumbnailURL == "" {
-                cell.thumbnailImageView.loadImageUsingUrlString(urlString: "https://img.youtube.com/vi/\(video.videoId)/sddefault.jpg" as NSString)
+            if viewCount == "0" {
+                cell.detailsLabel.text = "\(video.channelTitle) • \(timeSincePublished)"
             } else {
-                cell.thumbnailImageView.loadImageUsingUrlString(urlString: video.thumbnailURL as NSString)
+                cell.detailsLabel.text = "\(video.channelTitle) • \(viewCount) views • \(timeSincePublished)"
             }
             
+            let imageUrl = URL(string: "https://img.youtube.com/vi/\(video.videoId)/maxresdefault.jpg")!
+            ImageService.getImage(withURL: imageUrl) { (image) in
+                image?.getColors({ (colors) in
+                    if colors?.primary.components.red == 0.47058823529411764 &&  colors?.primary.components.green == 0.4 && colors?.primary.components.blue == 0.4 {
+                        cell.thumbnailImageView.loadImageUsingUrlString(urlString: video.thumbnailURL as NSString)
+                    } else {
+                        cell.thumbnailImageView.image = image
+                    }
+                })
+            }
+        
             if let picString = video.channelImageURL {
                 let channelImageURL = URL(string: picString)!
                 ImageService.getImage(withURL: channelImageURL) { (image) in
@@ -47,21 +66,7 @@ extension YoutubeTrendingController: UICollectionViewDelegate, UICollectionViewD
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: adCellId, for: indexPath) as! LargeNativeAdCollectionViewCell
-            
-            cell.callToActionButton.backgroundColor = .youtubeRed()
-            cell.advertiserNameLabel.textColor = .youtubeLightGray()
-            cell.adLabel.layer.borderColor = UIColor.youtubeRed().cgColor
-            cell.adLabel.textColor = .youtubeRed()
-            cell.iconImageView.backgroundColor = .youtubeLightGray()
-            
-            let nativeAds = delegate.nativeAds
-            if nativeAds.count > 0 {
-                let newNativeAd = nativeAds.randomElement()
-                cell.nativeAd = newNativeAd
-            } else {
-                print("No native ads to show")
-            }
-            
+            //do native ad stuff here
             return cell
         }
         
@@ -69,14 +74,17 @@ extension YoutubeTrendingController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if videos[indexPath.item] is YoutubeVideo {
-            return CGSize(width: view.frame.width, height: (view.frame.width / (16/9)) + 80)
+            return CGSize(width: view.frame.width - 20, height: (view.frame.width / (16/9)) + 80)
         } else {
-            return CGSize(width: view.frame.width, height: (view.frame.width / (16/9)) + 110)
+            return CGSize(width: view.frame.width - 20, height: (view.frame.width / (16/9)) + 110)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let video = videos[indexPath.item] as? YoutubeVideo {
+        if keyboardIsVisible {
+            dismissKeyboard()
+        } else if let video = videos[indexPath.item] as? YoutubeVideo {
+            print(keyboardIsVisible)
             let videoController = YoutubeVideoController()
             
             let videoToPlay = YoutubeVideo(title: video.title, videoId: video.videoId, thumbnailURL: video.thumbnailURL, publishedAt: video.publishedAt, channelTitle: video.channelTitle, channelId: video.channelId, viewCount: video.viewCount, duration: nil, channelImageURL: video.channelImageURL)
@@ -86,5 +94,15 @@ extension YoutubeTrendingController: UICollectionViewDelegate, UICollectionViewD
             
             present(videoController, animated: true, completion: nil)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 75)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! YoutubeTrendingHeaderCell
+        header.searchBar.delegate = self
+        return header
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class TwitchBrowseCell: UICollectionViewCell {
     
-    let boxArtImageView: AsyncImageView = {
-        let imageView = AsyncImageView()
+    let boxArtImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.backgroundColor = .twitchGray()
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 3
@@ -20,6 +20,7 @@ class TwitchBrowseCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail

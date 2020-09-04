@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TwitchTopStreamsCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -41,13 +42,7 @@ class TwitchTopStreamsCell: UICollectionViewCell, UICollectionViewDelegate, UICo
         return label
     }()
     
-    var streams: [TwitchStream] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    var streams: [TwitchStream] = []
     
     let cellId = "cellId"
     var viewController: UIViewController?
@@ -76,6 +71,10 @@ class TwitchTopStreamsCell: UICollectionViewCell, UICollectionViewDelegate, UICo
         
         TwitchService.getStreams(parameters: parameters) { (streams) in
             self.streams = streams
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -86,12 +85,15 @@ class TwitchTopStreamsCell: UICollectionViewCell, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TwitchTopStreamCell
         let stream = streams[indexPath.item]
-
+        
         if let picUrl = stream.streamerPicURL {
             cell.profilePicImageView.loadImageUsingUrlString(urlString: picUrl as NSString)
         }
 
-        cell.nameLabel.text = stream.steamerName
+        cell.layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
+        cell.liveLabel.text = "LIVE"
+
+        cell.nameLabel.text = stream.streamerName
                 
         return cell
     }
@@ -102,7 +104,8 @@ class TwitchTopStreamsCell: UICollectionViewCell, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let streamController = TwitchStreamController()
-        streamController.streamerName = streams[indexPath.item].steamerName
+        streamController.streamerName = streams[indexPath.item].streamerName
+        streamController.streamerImageUrl = streams[indexPath.item].streamerPicURL
         streamController.modalPresentationStyle = .overFullScreen
         
         viewController?.present(streamController, animated: true, completion: nil)

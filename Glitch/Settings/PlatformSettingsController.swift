@@ -105,12 +105,6 @@ class PlatformSettingsController: UIViewController, UITableViewDelegate, UITable
     
     private func signIn() {
         switch platform {
-        case "mixer":
-            MixerService.signIn(withViewController: self) { (signedIn) in
-                if signedIn {
-                    self.reloadData()
-                }
-            }
         case "twitch":
             TwitchService.signIn(withViewController: self) { (status) in
                 if status == .validAccessToken {
@@ -119,12 +113,6 @@ class PlatformSettingsController: UIViewController, UITableViewDelegate, UITable
             }
         case "twitter":
             TwitterService.signIn(withViewController: self) { (isSignedIn) in
-                if isSignedIn {
-                    self.reloadData()
-                }
-            }
-        case "youtube":
-            YoutubeService.signIn(withViewController: self) { (isSignedIn) in
                 if isSignedIn {
                     self.reloadData()
                 }
