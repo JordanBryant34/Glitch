@@ -39,16 +39,9 @@ extension YoutubeTrendingController: UICollectionViewDelegate, UICollectionViewD
                 cell.detailsLabel.text = "\(video.channelTitle) • \(viewCount) views • \(timeSincePublished)"
             }
             
-            let imageUrl = URL(string: "https://img.youtube.com/vi/\(video.videoId)/maxresdefault.jpg")!
-            ImageService.getImage(withURL: imageUrl) { (image) in
-                image?.getColors({ (colors) in
-                    if colors?.primary.components.red == 0.47058823529411764 &&  colors?.primary.components.green == 0.4 && colors?.primary.components.blue == 0.4 {
-                        cell.thumbnailImageView.loadImageUsingUrlString(urlString: video.thumbnailURL as NSString)
-                    } else {
-                        cell.thumbnailImageView.image = image
-                    }
-                })
-            }
+            let imageUrl = "https://img.youtube.com/vi/\(video.videoId)/maxresdefault.jpg"
+            
+            cell.thumbnailImageView.loadImageUsingUrlString(urlString: imageUrl as NSString)
         
             if let picString = video.channelImageURL {
                 let channelImageURL = URL(string: picString)!
