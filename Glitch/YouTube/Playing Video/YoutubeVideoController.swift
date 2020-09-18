@@ -22,7 +22,7 @@ class YoutubeVideoController: UIViewController {
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .youtubeBlack()
+        cv.backgroundColor = .twitchGray()
         cv.dataSource = self
         cv.delegate = self
         cv.isHidden = true
@@ -39,7 +39,7 @@ class YoutubeVideoController: UIViewController {
     
     let grayBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .youtubeBlack()
+        view.backgroundColor = .twitchGray()
         return view
     }()
     
@@ -83,14 +83,14 @@ class YoutubeVideoController: UIViewController {
     
     let adsAlertView: AdsAlertView = {
         let view = AdsAlertView()
-        view.alertView.backgroundColor = .youtubeDarkGray()
+        view.alertView.backgroundColor = .twitchLightGray()
         view.alertView.layer.borderColor = UIColor.youtubeRed().cgColor
         view.imageView.contentMode = .scaleToFill
         view.imageView.image = UIImage(named: "youtubeLogoLarge")
         view.imageView.contentMode = .scaleAspectFit
         view.titleLabel.text = "Sorry for the interruption"
         view.detailsLabel.text = "Watch a short ad in order to view this video?"
-        view.detailsLabel.textColor = UIColor.white.withAlphaComponent(0.7)
+        view.detailsLabel.textColor = .twitchGrayTextColor()
         view.confirmButton.setTitle("Watch ad", for: .normal)
         view.cancelButton.setTitle("No thanks", for: .normal)
         view.confirmButton.backgroundColor = .youtubeRed()

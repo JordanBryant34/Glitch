@@ -39,8 +39,6 @@ class EsportsFollowingCell: UICollectionViewCell {
     }
     
     private func setupCell() {
-        backgroundColor = .twitchLightGray()
-        
         addSubview(imageView)
         addSubview(nameLabel)
         

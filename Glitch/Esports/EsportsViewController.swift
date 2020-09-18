@@ -21,7 +21,7 @@ class EsportsViewController: UIViewController {
     
     let segmentControlBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = .twitchGray()
+        view.backgroundColor = .twitchLightGray()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false
         view.layer.shadowOffset = CGSize(width: 0, height: 0)

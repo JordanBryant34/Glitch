@@ -13,17 +13,17 @@ class TwitterProfileHeader: UITableViewHeaderFooterView, UITextViewDelegate {
     
     let backgroundImageView: AsyncImageView = {
         let imageView = AsyncImageView()
-        imageView.backgroundColor = .twitterDarkBlue()
+        imageView.backgroundColor = .twitchLightGray()
         return imageView
     }()
     
     let profileImageView: AsyncImageView = {
         let imageView = AsyncImageView()
-        imageView.backgroundColor = .twitterDarkBlue()
+        imageView.backgroundColor = .twitchLightGray()
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 45
         imageView.layer.borderWidth = 5
-        imageView.layer.borderColor = UIColor.twitterMediumBlue().cgColor
+        imageView.layer.borderColor = UIColor.twitchGray().cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -99,8 +99,8 @@ class TwitterProfileHeader: UITableViewHeaderFooterView, UITextViewDelegate {
         
         bioTextView.delegate = self
         
-        contentView.backgroundColor = .twitterMediumBlue()
-        backgroundColor = .twitterMediumBlue()
+        contentView.backgroundColor = .twitchGray()
+        backgroundColor = .twitchGray()
         
         contentView.addSubview(backgroundImageView)
         contentView.addSubview(profileImageView)

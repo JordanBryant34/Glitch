@@ -103,6 +103,8 @@
 		7A93D59823F4A28F00CC57C1 /* SelectSocialMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58923F4A28E00CC57C1 /* SelectSocialMediaVC.swift */; };
 		7A93D59B23F4A28F00CC57C1 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A93D58C23F4A28E00CC57C1 /* PageViewController.swift */; };
 		7A9453E62471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9453E52471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift */; };
+		7A9CE9A3250D9CAA006961F7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CE9A2250D9CAA006961F7 /* Game.swift */; };
+		7A9CE9A5250D9E02006961F7 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CE9A4250D9E02006961F7 /* GameController.swift */; };
 		7A9DE55E24463823009E6237 /* ExploreTwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DE55D24463822009E6237 /* ExploreTwitchCell.swift */; };
 		7A9DE56024463A85009E6237 /* ExplorePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DE55F24463A85009E6237 /* ExplorePageController.swift */; };
 		7A9DE56224463B6A009E6237 /* ExplorePageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DE56124463B6A009E6237 /* ExplorePageExtension.swift */; };
@@ -263,6 +265,8 @@
 		7A93D58923F4A28E00CC57C1 /* SelectSocialMediaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSocialMediaVC.swift; sourceTree = "<group>"; };
 		7A93D58C23F4A28E00CC57C1 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		7A9453E52471D4AC00B81DB6 /* LargeNativeAdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeNativeAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A9CE9A2250D9CAA006961F7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		7A9CE9A4250D9E02006961F7 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		7A9DE55D24463822009E6237 /* ExploreTwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTwitchCell.swift; sourceTree = "<group>"; };
 		7A9DE55F24463A85009E6237 /* ExplorePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageController.swift; sourceTree = "<group>"; };
 		7A9DE56124463B6A009E6237 /* ExplorePageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageExtension.swift; sourceTree = "<group>"; };
@@ -505,6 +509,7 @@
 				7A93D54623F4A26C00CC57C1 /* Twitter */,
 				7A93D52123F4A26C00CC57C1 /* YouTube */,
 				7A9DE55B244637CE009E6237 /* Explore */,
+				7A9CE99F250D9C8C006961F7 /* IGDB */,
 				7A93D4F423F4A1E100CC57C1 /* AppDelegate.swift */,
 				7A93D58723F4A28E00CC57C1 /* BackgroundView.swift */,
 				7A93D57E23F4A28D00CC57C1 /* ContainerViewController.swift */,
@@ -712,6 +717,31 @@
 				7A0C841A24897DFB004F9C83 /* ACThumbnailGenerator.swift */,
 			);
 			path = "Extensions-Helper";
+			sourceTree = "<group>";
+		};
+		7A9CE99F250D9C8C006961F7 /* IGDB */ = {
+			isa = PBXGroup;
+			children = (
+				7A9CE9A1250D9C9D006961F7 /* Controllers */,
+				7A9CE9A0250D9C98006961F7 /* Model */,
+			);
+			path = IGDB;
+			sourceTree = "<group>";
+		};
+		7A9CE9A0250D9C98006961F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A9CE9A2250D9CAA006961F7 /* Game.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A9CE9A1250D9C9D006961F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A9CE9A4250D9E02006961F7 /* GameController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		7A9DE55B244637CE009E6237 /* Explore */ = {
@@ -1093,6 +1123,7 @@
 				7A93D56D23F4A26C00CC57C1 /* RelatedVideoCell.swift in Sources */,
 				7A426EB22486DC0000B0D912 /* SubscriptionViewController.swift in Sources */,
 				7A93D57823F4A26C00CC57C1 /* MixerStreamsHeader.swift in Sources */,
+				7A9CE9A5250D9E02006961F7 /* GameController.swift in Sources */,
 				7A0C841B24897DFB004F9C83 /* ACThumbnailGenerator.swift in Sources */,
 				7A93D55B23F4A26C00CC57C1 /* TwitchViewController.swift in Sources */,
 				7A93D55C23F4A26C00CC57C1 /* YoutubeViewController.swift in Sources */,
@@ -1134,6 +1165,7 @@
 				7AAB074F24CA264200EBBA3B /* YoutubeOnboardingController.swift in Sources */,
 				7A23183823FDC9A70039E196 /* TwitterTweet.swift in Sources */,
 				7A93D55A23F4A26C00CC57C1 /* TwitchStreamsHeader.swift in Sources */,
+				7A9CE9A3250D9CAA006961F7 /* Game.swift in Sources */,
 				7A93D57623F4A26C00CC57C1 /* MixerGame.swift in Sources */,
 				7AB17214245F5394003DB3D6 /* YoutubeSearchCell.swift in Sources */,
 				7A9F632024A580C400A41DD3 /* LiveMatchTableViewCell.swift in Sources */,

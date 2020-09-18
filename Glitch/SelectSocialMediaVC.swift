@@ -94,11 +94,11 @@ class SelectSocialMediaVC: UIViewController, UICollectionViewDelegate, UICollect
         case 1:
             changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchGray())
         case 2:
-            changeColors(newBackgroundColor: .youtubeBlack(), newHeaderColor: .youtubeBlack())
+            changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchGray())
         case 3:
-            changeColors(newBackgroundColor: .twitterMediumBlue(), newHeaderColor: .twitterDarkBlue())
+            changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchGray())
         case 4:
-            changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchLightGray())
+            changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchGray())
         case 5:
             changeColors(newBackgroundColor: .twitchGray(), newHeaderColor: .twitchLightGray())
         default:

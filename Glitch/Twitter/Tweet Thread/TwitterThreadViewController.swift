@@ -49,7 +49,7 @@ class TwitterThreadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .twitterDarkBlue()
+        view.backgroundColor = .twitchLightGray()
         
         tableView.delegate = self
         tableView.dataSource = self

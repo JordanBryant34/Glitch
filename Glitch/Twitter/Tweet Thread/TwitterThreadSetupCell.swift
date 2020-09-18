@@ -27,7 +27,7 @@ extension TwitterThreadViewController {
         cell.tweet = tweet
         cell.viewController = self
         cell.retweetedLabel.text = ""
-        cell.backgroundColor = .twitterMediumBlue()
+        cell.backgroundColor = .twitchGray()
         
         return cell
     }
@@ -51,7 +51,7 @@ extension TwitterThreadViewController {
         cell.quoteView.quoteTweet = tweet.quoteTweet
         cell.quoteView.viewController = self
         cell.retweetedLabel.text = ""
-        cell.backgroundColor = .twitterMediumBlue()
+        cell.backgroundColor = .twitchGray()
         
         return cell
     }
@@ -73,7 +73,7 @@ extension TwitterThreadViewController {
         cell.tweet = tweet
         cell.viewController = self
         cell.retweetedLabel.text = ""
-        cell.backgroundColor = .twitterMediumBlue()
+        cell.backgroundColor = .twitchGray()
         
         return cell
     }
@@ -95,7 +95,7 @@ extension TwitterThreadViewController {
         cell.tweet = tweet
         cell.viewController = self
         cell.retweetedLabel.text = ""
-        cell.backgroundColor = .twitterMediumBlue()
+        cell.backgroundColor = .twitchGray()
         
         return cell
     }

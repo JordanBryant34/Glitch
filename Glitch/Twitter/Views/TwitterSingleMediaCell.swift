@@ -432,8 +432,6 @@ class TwitterSingleMediaCell: UITableViewCell, UITextViewDelegate {
         
         var urlString = URL.absoluteString
         
-        print(urlString)
-        
         if urlString.hasPrefix("#") {
             let hashtagController = HashtagViewController()
             hashtagController.hashtag = urlString

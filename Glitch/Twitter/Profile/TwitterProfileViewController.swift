@@ -88,7 +88,7 @@ class TwitterProfileViewController: UIViewController {
         tableView.register(TwitterMultiPictureCell.self, forCellReuseIdentifier: multiPicCellId)
         tableView.register(TwitterQuoteCell.self, forCellReuseIdentifier: quoteCellId)
         
-        view.backgroundColor = .twitterMediumBlue()
+        view.backgroundColor = .twitchGray()
         
         view.addSubview(tableView)
         view.addSubview(activityIndicator)

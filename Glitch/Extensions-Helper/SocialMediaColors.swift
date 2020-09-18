@@ -23,8 +23,12 @@ extension UIColor {
         return UIColor(r: 29, g: 161, b: 242)
     }
     
+//    class func twitterGrayText() -> UIColor {
+//        return UIColor(r: 139, g: 152, b: 164)
+//    }
+  
     class func twitterGrayText() -> UIColor {
-        return UIColor(r: 139, g: 152, b: 164)
+        return UIColor(r: 120, g: 120, b: 120)
     }
     
     class func twitterSeparatorColor() -> UIColor {

@@ -42,7 +42,7 @@ class YoutubeVideoCell: UICollectionViewCell {
     let detailsLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(12)
-        label.textColor = .youtubeLightGray()
+        label.textColor = .twitchGrayTextColor()
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         label.sizeToFit() 

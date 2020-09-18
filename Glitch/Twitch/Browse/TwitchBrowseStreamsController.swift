@@ -15,7 +15,7 @@ class TwitchBrowseStreamsController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 15
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -41,6 +41,12 @@ class TwitchBrowseStreamsController: UIViewController {
     
     var game: TwitchGame?
     var streams: [Any] = []
+    
+    var headerImage: UIImage? {
+        didSet {
+            reloadData()
+        }
+    }
     
     let cellId = "cellId"
     let adCellId = "adCellId"
@@ -71,6 +77,8 @@ class TwitchBrowseStreamsController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         activityIndicator.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         activityIndicator.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        
+        getHeaderImage()
     }
     
     private func getStreams() {
@@ -94,6 +102,22 @@ class TwitchBrowseStreamsController: UIViewController {
                 self.reloadData()
                 self.collectionView.isHidden = false
                 self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    private func getHeaderImage() {
+        guard let game = game else { return }
+        GameController.shared.getScreenshot(withName: game.name) { (backgroundImageUrl) in
+            guard let imageUrl = backgroundImageUrl else {
+                self.headerImage = UIImage(named: "noGameArt")
+                return
+            }
+            
+            if let url = URL(string: imageUrl) {
+                ImageService.getImage(withURL: url) { (image) in
+                    self.headerImage = image
+                }
             }
         }
     }

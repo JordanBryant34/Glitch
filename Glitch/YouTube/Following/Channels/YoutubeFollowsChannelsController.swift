@@ -33,7 +33,7 @@ class YoutubeFollowsChannelsController: UICollectionViewCell, UICollectionViewDe
         button.setTitle("+", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 40)
         button.titleLabel?.textAlignment = .center
-        button.backgroundColor = .youtubeDarkGray()
+        button.backgroundColor = .twitchLightGray()
         button.setTitleColor(.white, for: .normal)
         return button
     }()

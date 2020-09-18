@@ -22,7 +22,7 @@ class YoutubeViewController: UIViewController {
     
     let segmentControlBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = .youtubeDarkGray()
+        view.backgroundColor = .twitchLightGray()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false
         view.layer.shadowOffset = CGSize(width: 0, height: 0)

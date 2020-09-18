@@ -25,7 +25,7 @@ extension YoutubeTrendingController: UICollectionViewDelegate, UICollectionViewD
             cell.layer.cornerRadius = 3
             cell.layer.borderColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.1).cgColor
             cell.layer.borderWidth = 1
-            cell.bottomView.backgroundColor = .youtubeDarkGray()
+            cell.bottomView.backgroundColor = .twitchLightGray()
             
             let viewCount = HelperFunctions.formatPoints(from: video.viewCount ?? 0)
             

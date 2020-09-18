@@ -42,7 +42,7 @@ extension TwitterThreadViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerId) as! TwitterThreadFooter
         footer.backgroundColor = .twitterMediumBlue()
-        footer.backgroundView?.backgroundColor = .twitterMediumBlue()
+        footer.backgroundView?.backgroundColor = .twitchGray()
         footer.viewInAppButton.addTarget(self, action: #selector(openTwitter), for: .touchUpInside)
         return footer
     }

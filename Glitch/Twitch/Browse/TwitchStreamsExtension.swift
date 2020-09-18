@@ -97,15 +97,15 @@ extension TwitchBrowseStreamsController: UICollectionViewDataSource, UICollectio
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! TwitchStreamsHeader
         guard let game = self.game else { return header }
         
-        header.nameLabel.text = game.name
-        
-        var url = game.boxArtURL
-        url = url.replacingOccurrences(of: "{width}", with: "250")
-        url = url.replacingOccurrences(of: "{height}", with: "375")
-        
-        ImageService.getImage(withURL: URL(string: url)!) { (image) in
-            header.boxArtImageView.image = image
+        if let headerImage = headerImage {
+            header.backgroundImageView.image = headerImage
+            
+            UIView.animate(withDuration: 0.2) {
+                header.backgroundImageView.alpha = 1.0
+            }
         }
+        
+        header.nameLabel.text = game.name
         
         if streams.count > 0 {
             var totalViewers = 0
@@ -122,7 +122,7 @@ extension TwitchBrowseStreamsController: UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: 225)
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {

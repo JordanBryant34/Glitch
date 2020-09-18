@@ -28,7 +28,7 @@ class YoutubeSearchController: UIViewController, UISearchBarDelegate {
         search.returnKeyType = .search
         search.backgroundImage = UIImage()
         search.searchBarStyle = .minimal
-        search.searchTextField.backgroundColor = .youtubeGray()
+        search.searchTextField.backgroundColor = .twitchLightGray()
         search.searchTextField.textColor = .white
         search.tintColor = .white
         return search
@@ -44,7 +44,7 @@ class YoutubeSearchController: UIViewController, UISearchBarDelegate {
     
     let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .youtubeGray()
+        view.backgroundColor = .twitchLightGray()
         return view
     }()
     
@@ -85,7 +85,7 @@ class YoutubeSearchController: UIViewController, UISearchBarDelegate {
     }
     
     private func setupViews() {
-        view.backgroundColor = .youtubeBlack()
+        view.backgroundColor = .twitchGray()
         
         view.addSubview(backgroundView)
         view.addSubview(activityIndicator)

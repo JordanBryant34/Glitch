@@ -50,7 +50,7 @@ class VideoInfoView: UIView {
         let label = UILabel()
         label.sizeToFit()
         label.font = label.font.withSize(13.5)
-        label.textColor = .youtubeLightGray()
+        label.textColor = .twitchGrayTextColor()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -77,7 +77,7 @@ class VideoInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .youtubeBlack()
+        backgroundColor = .twitchGray()
         
         titleLabel.preferredMaxLayoutWidth = frame.width * 0.9
         

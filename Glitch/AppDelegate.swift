@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
     let rewardAdId = "ca-app-pub-3940256099942544/5224354917"
     let nativeAdId = "ca-app-pub-3940256099942544/2247696110"
     
+    let gameController = GameController.shared
+    
     //Actual ID's for Google Admob
 //    let rewardAdId = "ca-app-pub-7879710565936793/2226085464"
 //    let nativeAdId = "ca-app-pub-7879710565936793/9913003799"
@@ -59,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
         getRewardAds()
         getNativeAds()
         checkId()
-                
+        
+        updateAPIKeys()
+        
         return true
     }
     
@@ -138,6 +142,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADUnifiedNativeAdLoaderD
         UserDefaults.standard.set(0, forKey: "contentWatchedCount")
         rewardAdInstance = GADRewardBasedVideoAd.sharedInstance()
         rewardAdInstance.load(GADRequest(), withAdUnitID: rewardAdId)
+    }
+    
+    private func updateAPIKeys() {
+        gameController.storeAPIKey()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

@@ -32,7 +32,7 @@ class RelatedVideoCell: UICollectionViewCell {
     
     let channelNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .youtubeLightGray()
+        label.textColor = .twitchGrayTextColor()
         label.font = label.font.withSize(13)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class RelatedVideoCell: UICollectionViewCell {
     
     let viewCountLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .youtubeLightGray()
+        label.textColor = .twitchGrayTextColor()
         label.font = label.font.withSize(13)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false

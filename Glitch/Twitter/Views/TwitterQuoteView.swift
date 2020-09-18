@@ -400,7 +400,6 @@ class TwitterQuoteView: UIView, UITextViewDelegate {
         
         var urlString = URL.absoluteString
         
-        print(urlString)
         
         if urlString.hasPrefix("#") {
             let hashtagController = HashtagViewController()

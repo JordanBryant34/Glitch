@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "unnamed.png",
+      "filename" : "noGameArt.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "youtubeBackground2x (4).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "youtubeBackground3x (4).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

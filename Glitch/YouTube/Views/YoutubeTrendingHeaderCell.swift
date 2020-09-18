@@ -15,7 +15,7 @@ class YoutubeTrendingHeaderCell: UICollectionViewCell {
         search.returnKeyType = .search
         search.backgroundImage = UIImage()
         search.searchBarStyle = .minimal
-        search.searchTextField.backgroundColor = .youtubeGray()
+        search.searchTextField.backgroundColor = .twitchLightGray()
         search.searchTextField.textColor = .white
         search.placeholder = "Search Videos"
         search.tintColor = .white

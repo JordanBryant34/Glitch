@@ -18,7 +18,7 @@ class EsportsFollowingContainerCell: UITableViewCell,  UICollectionViewDelegate,
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 25)
-        cv.backgroundColor = .twitchLightGray()
+        cv.backgroundColor = .twitchGray()
         cv.dataSource = self
         cv.delegate = self
         cv.allowsMultipleSelection = true
@@ -33,7 +33,7 @@ class EsportsFollowingContainerCell: UITableViewCell,  UICollectionViewDelegate,
         button.setTitle("+", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 40)
         button.titleLabel?.textAlignment = .center
-        button.backgroundColor = .twitchGray()
+        button.backgroundColor = .twitchLightGray()
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -101,7 +101,7 @@ class EsportsFollowingContainerCell: UITableViewCell,  UICollectionViewDelegate,
         cell.team = team
         
         let selectedView = UIView()
-        selectedView.backgroundColor = UIColor.twitchGrayTextColor().withAlphaComponent(0.2)
+        selectedView.backgroundColor = UIColor.twitchLightGray()
         cell.selectedBackgroundView = selectedView
         
         return cell
